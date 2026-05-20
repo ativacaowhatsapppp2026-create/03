@@ -112,14 +112,9 @@ export default function App() {
       setSearchError("Por favor, preencha o número de CPF do cliente.");
     } else {
       setSearchError(
-        "CPF não localizado no manifesto de transporte ativo. Para testar, use o CPF predefinido: 706.007.596-07"
+        "CPF não localizado no manifesto de transporte ativo."
       );
     }
-  };
-
-  const fillDemoCPF = () => {
-    setCpfInput(shipmentData.cpf);
-    setSearchError("");
   };
 
   // Calculate dynamic telemetry based on progress
@@ -272,16 +267,6 @@ export default function App() {
                 </button>
               </form>
 
-              {/* Instant Fill Utility for demonstration */}
-              <div className="mt-6 pt-5 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={fillDemoCPF}
-                  className="w-full text-center text-xs py-2 px-3 rounded bg-slate-50 border border-slate-200 hover:border-slate-300 hover:bg-slate-100 text-slate-600 font-semibold transition"
-                >
-                  💡 Usar CPF de Demonstração (706.007.596-07)
-                </button>
-              </div>
             </div>
 
             {/* Quick trust metrics panel */}
