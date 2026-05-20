@@ -1,0 +1,6 @@
+{
+  "name": "Localizacar Cegonha",
+  "description": "Rastreamento em tempo real de transporte de carros e carretas cegonha.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
