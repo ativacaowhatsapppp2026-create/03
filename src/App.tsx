@@ -34,7 +34,7 @@ export default function App() {
   const [activeShipment, setActiveShipment] = useState<typeof shipmentData | null>(null);
 
   // Simulation State
-  const [progress, setProgress] = useState(2.3); // Start at ~2.3% (Acabou de sair de Uruguaiana)
+  const [progress, setProgress] = useState(42.5); // Start at ~42.5% (Near Curitiba)
   const [isSimulating, setIsSimulating] = useState(false);
   const simulationIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -104,7 +104,7 @@ export default function App() {
 
     if (cleaned === shipmentData.cpf) {
       setActiveShipment(shipmentData);
-      setProgress(2.5); // Reset back to Uruguaiana departure on load
+      setProgress(42.5); // Reset back to current position on load
       setIsSimulating(false);
       setSearchError("");
       triggerToast("📡 Conexão GPS Estabelecida! Cegonha Localizada.");
@@ -187,7 +187,7 @@ export default function App() {
                 onClick={() => {
                   setActiveShipment(null);
                   setIsSimulating(false);
-                  setProgress(2.5);
+                  setProgress(42.5);
                 }}
                 className="text-xs font-bold font-display px-4 py-2 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80 transition-colors cursor-pointer"
               >
@@ -376,7 +376,7 @@ export default function App() {
                       <div className="relative">
                         <input
                           type="range"
-                          min="2.5"
+                          min="0"
                           max="100"
                           step="0.1"
                           value={progress}
@@ -412,8 +412,8 @@ export default function App() {
                       <button
                         onClick={() => {
                           setIsSimulating(false);
-                          setProgress(2.5);
-                          triggerToast("🚚 Recuado para: Acabando de sair de Uruguaiana, RS.");
+                          setProgress(42.5);
+                          triggerToast("🚚 Restaurado para: Próximo a Curitiba, PR.");
                         }}
                         className="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 py-2.5 px-3 rounded text-xs font-display font-bold flex items-center justify-center gap-1.5 transition cursor-pointer"
                         title="Voltar ao ponto inicial original"
