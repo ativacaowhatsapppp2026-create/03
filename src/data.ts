@@ -10,8 +10,8 @@ export const shipmentData: Shipment = {
   origin: "Uruguaiana, RS",
   destination: "Ibiaí, MG",
   destinationAddress: "Rua Nove, Casa 20",
-  currentCity: "Uruguaiana",
-  currentState: "RS",
+  currentCity: "Curitiba",
+  currentState: "PR",
   totalDistanceKm: 2040,
   coveredDistanceKm: 867, // near Curitiba
   estimatedDays: 1,
