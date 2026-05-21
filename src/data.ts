@@ -1,78 +1,59 @@
 import { Shipment } from "./types";
 
 export const shipmentData: Shipment = {
-  cpf: "70600759607",
+  cpf: "01944334041",
   customerName: "Welvis Moreira de Souza",
-  customerEmail: "welvisevi@gmail.com",
+  customerEmail: "caralceloso_fisio@yahoo.com.br",
   driverName: "Marcos Aurélio Silveira",
   driverPhone: "+55 (55) 99182-4432",
   truckPlate: "CEG-4D89 (Scania R 450)",
-  origin: "Uruguaiana, RS",
-  destination: "Ibiaí, MG",
-  destinationAddress: "Rua Nove, Casa 20",
-  currentCity: "Uruguaiana",
-  currentState: "RS",
-  totalDistanceKm: 2040,
-  coveredDistanceKm: 45, // just left Uruguaiana!
-  estimatedDays: 2,
-  departureDate: "20/05/2026",
+  origin: "Osasco, SP",
+  destination: "Santa Maria, RS",
+  destinationAddress: "Centro rua felipe de oliveira numero 44 401 cep 97015250",
+  currentCity: "Osasco",
+  currentState: "SP",
+  totalDistanceKm: 1040,
+  coveredDistanceKm: 10,
+  estimatedDays: 3,
+  departureDate: "21/05/2026",
   vehicles: [
     {
-      model: "VW Gol 1.6 (Mod. 2011)",
+      model: "VW Nivus HL TSI",
       brand: "Volkswagen",
       color: "Prata",
-      plate: "ASR9525",
-      year: 2010,
-      condition: "Excelente (Ano Fab. 2010 / Mod. 2011)"
+      plate: "TLR9F16",
+      year: 2024,
+      condition: "Excelente"
     }
   ],
   route: [
-    { lat: -29.7547, lng: -57.0863, city: "Uruguaiana", state: "RS" },
-    { lat: -29.3524, lng: -56.5512, city: "Itaqui", state: "RS" },
-    { lat: -28.6599, lng: -56.0028, city: "São Borja", state: "RS" },
-    { lat: -28.2586, lng: -52.4089, city: "Passo Fundo", state: "RS" },
-    { lat: -27.2423, lng: -52.0245, city: "Concórdia", state: "SC" },
-    { lat: -26.2443, lng: -49.3855, city: "São Bento do Sul", state: "SC" },
+    { lat: -23.5329, lng: -46.7917, city: "Osasco", state: "SP" },
     { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
-    { lat: -24.4875, lng: -47.8436, city: "Registro", state: "SP" },
-    { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
-    { lat: -22.9056, lng: -47.0608, city: "Campinas", state: "SP" },
-    { lat: -21.1775, lng: -47.8103, city: "Ribeirão Preto", state: "SP" },
-    { lat: -19.7476, lng: -47.9392, city: "Uberaba", state: "MG" },
-    { lat: -18.5744, lng: -46.5181, city: "Patos de Minas", state: "MG" },
-    { lat: -17.2023, lng: -44.9254, city: "Pirapora", state: "MG" },
-    { lat: -16.2572, lng: -44.9122, city: "Ibiaí", state: "MG" }
+    { lat: -28.2586, lng: -52.4089, city: "Passo Fundo", state: "RS" },
+    { lat: -29.6842, lng: -53.8069, city: "Santa Maria", state: "RS" }
   ],
   statusLog: [
     {
       title: "Cegonha em Trânsito",
-      description: "A carreta cegonha acabou de sair do terminal de Uruguaiana - RS e já se encontra em trânsito com destino a Ibiaí - MG. Viagem monitorada via satélite.",
-      time: "20:07",
-      date: "20/05/2026",
+      description: "A cegonha está saindo de Osasco e a caminho do destino.",
+      time: "13:00",
+      date: "21/05/2026",
       completed: true,
       active: true
     },
     {
       title: "Carga Pronta para Viagem",
       description: "O veículo integrado ao manifesto de carga foi devidamente fixado e testado contra vibração. Amarração concluída.",
-      time: "18:30",
-      date: "20/05/2026",
+      time: "10:30",
+      date: "21/05/2026",
       completed: true,
       active: false
     },
     {
       title: "Coleta e Inspeção de Entrada",
-      description: "Vistoria veicular detalhada realizada no VW Gol 1.6 prata em Uruguaiana com fotos anexadas ao laudo técnico de inspeção.",
-      time: "15:45",
-      date: "20/05/2026",
-      completed: true,
-      active: false
-    },
-    {
-      title: "Contrato e Manifesto Liberados",
-      description: "Emissão de CT-e (Conhecimento de Transporte Eletrônico) concluída e validada junto aos postos fiscais da Receita Estadual.",
-      time: "10:12",
-      date: "20/05/2026",
+      description: "Vistoria veicular detalhada realizada no VW Nivus em Osasco com fotos anexadas ao laudo técnico de inspeção.",
+      time: "09:45",
+      date: "21/05/2026",
       completed: true,
       active: false
     }
