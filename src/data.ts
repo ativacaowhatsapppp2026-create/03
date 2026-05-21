@@ -2,7 +2,7 @@ import { Shipment } from "./types";
 
 export const shipmentData: Shipment = {
   cpf: "01944334041",
-  customerName: "Welvis Moreira de Souza",
+  customerName: "Carolina Fantinel Veloso",
   customerEmail: "caralceloso_fisio@yahoo.com.br",
   driverName: "Marcos Aurélio Silveira",
   driverPhone: "+55 (55) 99182-4432",
