@@ -74,7 +74,7 @@ export default function TrackingMap({ route, progress }: TrackingMapProps) {
               <div class="absolute -inset-1.5 bg-blue-600/30 rounded-full animate-ping"></div>
             </div>
             <div class="text-[9px] font-bold font-display bg-white border border-slate-200 text-blue-900 mt-1 px-1.5 rounded shadow-sm whitespace-nowrap leading-none py-1">
-              RS - Uruguaiana (Origem)
+              ${originItem.state} - ${originItem.city} (Origem)
             </div>
           </div>
         `,
@@ -93,7 +93,7 @@ export default function TrackingMap({ route, progress }: TrackingMapProps) {
               <div class="absolute -inset-1 bg-slate-400/20 rounded-full animate-pulse"></div>
             </div>
             <div class="text-[9px] font-bold font-display bg-white border border-slate-200 text-slate-700 mt-1 px-1.5 rounded shadow-sm whitespace-nowrap leading-none py-1">
-              MG - Ibiaí (Destino)
+              ${destItem.state} - ${destItem.city} (Destino)
             </div>
           </div>
         `,
