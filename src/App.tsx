@@ -133,8 +133,8 @@ export default function App() {
     Math.floor((progress / 100) * routePoints.length),
     routePoints.length - 1
   );
-  const currentPassingCity = routePoints[currentWaypointIndex]?.city || "Uruguaiana";
-  const currentPassingState = routePoints[currentWaypointIndex]?.state || "RS";
+  const currentPassingCity = routePoints[currentWaypointIndex]?.city || activeShipment.currentCity;
+  const currentPassingState = routePoints[currentWaypointIndex]?.state || activeShipment.currentState;
 
   // Dynamic active status checkpoint calculation
   const getTimelineStatus = (pct: number) => {
@@ -310,7 +310,7 @@ export default function App() {
                   )}
                   <p className="text-xs text-slate-500 flex items-center gap-1.5 font-medium">
                     <MapPin className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                    Destino: <span className="font-bold text-slate-800">{activeShipment.destination} - MG</span> ({activeShipment.destinationAddress})
+                    Destino: <span className="font-bold text-slate-800">{activeShipment.destination}</span> ({activeShipment.destinationAddress})
                   </p>
                 </div>
 
@@ -349,7 +349,7 @@ export default function App() {
                           Painel de Simulação GPS
                         </h4>
                         <p className="text-[11px] text-slate-500 mt-0.5 font-medium">
-                          Para testes, arraste o controle ou acione a locomoção automática para ver a cegonha se deslocando de Uruguaiana até Ibiaí.
+                          Acompanhe o trajeto da cegonha em tempo real no painel de simulação.
                         </p>
                       </div>
                       <div className="px-2 py-1 bg-slate-50 rounded border border-slate-200 flex items-center gap-1.5">
@@ -366,9 +366,9 @@ export default function App() {
                     {/* Progress Slider Track */}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-xs font-mono font-medium">
-                        <span className="text-slate-400">RS - Uruguaiana</span>
+                        <span className="text-slate-400">{activeShipment.origin}</span>
                         <span className="text-blue-600 font-bold">Progresso total: {progress.toFixed(1)}%</span>
-                        <span className="text-slate-400">MG - Ibiaí</span>
+                        <span className="text-slate-400">{activeShipment.destination}</span>
                       </div>
                       <div className="relative">
                         <input
@@ -410,7 +410,7 @@ export default function App() {
                         onClick={() => {
                           setIsSimulating(false);
                           setProgress(2.5);
-                          triggerToast("🚚 Recuado para: Acabando de sair de Uruguaiana, RS.");
+                          triggerToast(`🚚 Recuado para: Acabando de sair de ${activeShipment.origin}.`);
                         }}
                         className="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 py-2.5 px-3 rounded text-xs font-display font-bold flex items-center justify-center gap-1.5 transition cursor-pointer"
                         title="Voltar ao ponto inicial original"
@@ -626,7 +626,7 @@ export default function App() {
                               Carro Entregue no Endereço Final
                             </h4>
                             <p className="text-slate-600 font-medium text-[11px]">
-                              A carreta cegonha estacionou com segurança na <span className="text-amber-800 font-bold bg-amber-50 border border-amber-250 px-1.5 py-0.5 rounded">Rua Nove, Casa 20 (Ibiaí - MG)</span>. O veículo {activeShipment.vehicles[0]?.model || "cadastrado"} foi descarregado pranchado e entregue integralmente assinado pelo comprador.
+                              A carreta cegonha estacionou com segurança em seu destino: <span className="text-amber-800 font-bold bg-amber-50 border border-amber-250 px-1.5 py-0.5 rounded">{activeShipment.destinationAddress}</span>. O veículo {activeShipment.vehicles[0]?.model || "cadastrado"} foi descarregado pranchado e entregue integralmente assinado pelo comprador.
                             </p>
                           </div>
                         </div>
@@ -679,7 +679,7 @@ export default function App() {
               <div className="space-y-4">
                 <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
                   <span className="text-[10px] text-slate-400 font-mono uppercase font-bold block mb-2">
-                    Item Checklist Técnico (Terminal Uruguaiana)
+                    Item Checklist Técnico (Terminal de {activeShipment.origin.split(',')[0]})
                   </span>
                   
                   <div className="grid grid-cols-2 gap-2 text-[11px] leading-relaxed">
