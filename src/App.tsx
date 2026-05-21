@@ -34,7 +34,7 @@ export default function App() {
   const [activeShipment, setActiveShipment] = useState<typeof shipmentData | null>(null);
 
   // Simulation State
-  const [progress, setProgress] = useState(42.5); // Start at ~42.5% (Near Curitiba)
+  const [progress, setProgress] = useState(2.3); // Start at ~2.3% (Acabou de sair de Uruguaiana)
   const [isSimulating, setIsSimulating] = useState(false);
   const simulationIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -104,7 +104,7 @@ export default function App() {
 
     if (cleaned === shipmentData.cpf) {
       setActiveShipment(shipmentData);
-      setProgress(42.5); // Reset back to current position on load
+      setProgress(2.5); // Reset back to Uruguaiana departure on load
       setIsSimulating(false);
       setSearchError("");
       triggerToast("📡 Conexão GPS Estabelecida! Cegonha Localizada.");
@@ -112,9 +112,14 @@ export default function App() {
       setSearchError("Por favor, preencha o número de CPF do cliente.");
     } else {
       setSearchError(
-        "CPF não localizado no manifesto de transporte ativo."
+        "CPF não localizado no manifesto de transporte ativo. Para testar, use o CPF predefinido: 706.007.596-07"
       );
     }
+  };
+
+  const fillDemoCPF = () => {
+    setCpfInput(shipmentData.cpf);
+    setSearchError("");
   };
 
   // Calculate dynamic telemetry based on progress
@@ -187,7 +192,7 @@ export default function App() {
                 onClick={() => {
                   setActiveShipment(null);
                   setIsSimulating(false);
-                  setProgress(42.5);
+                  setProgress(2.5);
                 }}
                 className="text-xs font-bold font-display px-4 py-2 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80 transition-colors cursor-pointer"
               >
@@ -267,6 +272,16 @@ export default function App() {
                 </button>
               </form>
 
+              {/* Instant Fill Utility for demonstration */}
+              <div className="mt-6 pt-5 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={fillDemoCPF}
+                  className="w-full text-center text-xs py-2 px-3 rounded bg-slate-50 border border-slate-200 hover:border-slate-300 hover:bg-slate-100 text-slate-600 font-semibold transition"
+                >
+                  💡 Usar CPF de Demonstração (706.007.596-07)
+                </button>
+              </div>
             </div>
 
             {/* Quick trust metrics panel */}
@@ -376,7 +391,7 @@ export default function App() {
                       <div className="relative">
                         <input
                           type="range"
-                          min="0"
+                          min="2.5"
                           max="100"
                           step="0.1"
                           value={progress}
@@ -412,8 +427,8 @@ export default function App() {
                       <button
                         onClick={() => {
                           setIsSimulating(false);
-                          setProgress(42.5);
-                          triggerToast("🚚 Restaurado para: Próximo a Curitiba, PR.");
+                          setProgress(2.5);
+                          triggerToast("🚚 Recuado para: Acabando de sair de Uruguaiana, RS.");
                         }}
                         className="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 py-2.5 px-3 rounded text-xs font-display font-bold flex items-center justify-center gap-1.5 transition cursor-pointer"
                         title="Voltar ao ponto inicial original"

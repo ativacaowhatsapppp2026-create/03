@@ -10,12 +10,12 @@ export const shipmentData: Shipment = {
   origin: "Uruguaiana, RS",
   destination: "Ibiaí, MG",
   destinationAddress: "Rua Nove, Casa 20",
-  currentCity: "Curitiba",
-  currentState: "PR",
+  currentCity: "Uruguaiana",
+  currentState: "RS",
   totalDistanceKm: 2040,
-  coveredDistanceKm: 867, // near Curitiba
-  estimatedDays: 1,
-  departureDate: "19/05/2026",
+  coveredDistanceKm: 45, // just left Uruguaiana!
+  estimatedDays: 2,
+  departureDate: "20/05/2026",
   vehicles: [
     {
       model: "VW Gol 1.6 (Mod. 2011)",
@@ -46,8 +46,8 @@ export const shipmentData: Shipment = {
   statusLog: [
     {
       title: "Cegonha em Trânsito",
-      description: "A carreta cegonha cruzou a fronteira estadual e se aproxima de Curitiba - PR, em trânsito para Ibiaí - MG. Viagem monitorada via satélite.",
-      time: "14:30",
+      description: "A carreta cegonha acabou de sair do terminal de Uruguaiana - RS e já se encontra em trânsito com destino a Ibiaí - MG. Viagem monitorada via satélite.",
+      time: "20:07",
       date: "20/05/2026",
       completed: true,
       active: true
@@ -56,7 +56,7 @@ export const shipmentData: Shipment = {
       title: "Carga Pronta para Viagem",
       description: "O veículo integrado ao manifesto de carga foi devidamente fixado e testado contra vibração. Amarração concluída.",
       time: "18:30",
-      date: "19/05/2026",
+      date: "20/05/2026",
       completed: true,
       active: false
     },
@@ -64,7 +64,7 @@ export const shipmentData: Shipment = {
       title: "Coleta e Inspeção de Entrada",
       description: "Vistoria veicular detalhada realizada no VW Gol 1.6 prata em Uruguaiana com fotos anexadas ao laudo técnico de inspeção.",
       time: "15:45",
-      date: "19/05/2026",
+      date: "20/05/2026",
       completed: true,
       active: false
     },
@@ -72,7 +72,7 @@ export const shipmentData: Shipment = {
       title: "Contrato e Manifesto Liberados",
       description: "Emissão de CT-e (Conhecimento de Transporte Eletrônico) concluída e validada junto aos postos fiscais da Receita Estadual.",
       time: "10:12",
-      date: "19/05/2026",
+      date: "20/05/2026",
       completed: true,
       active: false
     }
