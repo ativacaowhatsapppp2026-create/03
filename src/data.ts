@@ -1,43 +1,43 @@
 import { Shipment } from "./types";
 
 export const shipmentData: Shipment = {
-  cpf: "01944334041",
-  customerName: "Carolina Fantinel Veloso",
-  customerEmail: "caralceloso_fisio@yahoo.com.br",
+  cpf: "42751301894",
+  customerName: "Pedro Henrique de Oliveira Cunha",
+  customerEmail: "pedrohenrique@email.com",
   driverName: "Marcos Aurélio Silveira",
   driverPhone: "+55 (55) 99182-4432",
   truckPlate: "CEG-4D89 (Scania R 450)",
-  origin: "Osasco, SP",
-  destination: "Santa Maria, RS",
-  destinationAddress: "Centro rua felipe de oliveira numero 44 401 cep 97015250",
-  currentCity: "Osasco",
-  currentState: "SP",
-  totalDistanceKm: 1040,
-  coveredDistanceKm: 10,
-  estimatedDays: 3,
-  departureDate: "21/05/2026",
+  origin: "Rio Grande do Sul",
+  destination: "Poá, SP",
+  destinationAddress: "Rua Marquês do Herval, número 333, Bairro Jardim Medina, Poá - SP, CEP: 08556-400",
+  currentCity: "Porto Alegre",
+  currentState: "RS",
+  totalDistanceKm: 1150,
+  coveredDistanceKm: 15,
+  estimatedDays: 4,
+  departureDate: "23/05/2026",
   vehicles: [
     {
-      model: "VW Nivus HL TSI",
-      brand: "Volkswagen",
+      model: "Astra",
+      brand: "Chevrolet",
       color: "Prata",
-      plate: "TLR9F16",
-      year: 2024,
+      plate: "XXX0000",
+      year: 2010,
       condition: "Excelente"
     }
   ],
   route: [
-    { lat: -23.5329, lng: -46.7917, city: "Osasco", state: "SP" },
+    { lat: -30.0346, lng: -51.2177, city: "Porto Alegre", state: "RS" },
     { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
-    { lat: -28.2586, lng: -52.4089, city: "Passo Fundo", state: "RS" },
-    { lat: -29.6842, lng: -53.8069, city: "Santa Maria", state: "RS" }
+    { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
+    { lat: -23.5284, lng: -46.3458, city: "Poá", state: "SP" }
   ],
   statusLog: [
     {
       title: "Cegonha em Trânsito",
-      description: "A cegonha está saindo de Osasco e a caminho do destino.",
+      description: "A cegonha está saindo do Rio Grande do Sul e a caminho do destino em São Paulo.",
       time: "13:00",
-      date: "21/05/2026",
+      date: "23/05/2026",
       completed: true,
       active: true
     },
@@ -45,15 +45,15 @@ export const shipmentData: Shipment = {
       title: "Carga Pronta para Viagem",
       description: "O veículo integrado ao manifesto de carga foi devidamente fixado e testado contra vibração. Amarração concluída.",
       time: "10:30",
-      date: "21/05/2026",
+      date: "23/05/2026",
       completed: true,
       active: false
     },
     {
       title: "Coleta e Inspeção de Entrada",
-      description: "Vistoria veicular detalhada realizada no VW Nivus em Osasco com fotos anexadas ao laudo técnico de inspeção.",
+      description: "Vistoria veicular detalhada realizada no Chevrolet Astra no Rio Grande do Sul com fotos anexadas ao laudo técnico de inspeção.",
       time: "09:45",
-      date: "21/05/2026",
+      date: "23/05/2026",
       completed: true,
       active: false
     }
