@@ -69,38 +69,63 @@ export const shipmentsData: Shipment[] = [
 },
 {
   cpf: "11111111111",
-  customerName: "[Cliente 2]",
+  customerName: "Luis Antonio de Andrade",
   customerEmail: "",
   driverName: "Marcos Aurélio Silveira",
   driverPhone: "+55 (55) 99182-4432",
   truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
   origin: "Curitiba, PR (Aguavita)",
-  destination: "Destino 2",
-  destinationAddress: "Endereço 2",
+  destination: "Engenheiro Paulo de Frontin, RJ",
+  destinationAddress: "Rua Durvaldino de Souza, nº 45, Bairro Morro Azul, Engenheiro Paulo de Frontin - RJ, CEP: 26650-000 (Ref: Rua do campo de futebol)",
   currentCity: "Curitiba",
   currentState: "PR",
-  totalDistanceKm: 1000,
+  totalDistanceKm: 850,
   coveredDistanceKm: 15,
   estimatedDays: 2,
   departureDate: "25/05/2026",
   cargo: [
     {
-      species: "Peixe X",
+      species: "Tilápia Tailandesa",
+      quantity: "1 milheiro",
+      details: "Alevinos, oxigenação 95%"
+    },
+    {
+      species: "Carpa Capim",
+      quantity: "20 un",
+      details: "Alevinos saudáveis"
+    },
+    {
+      species: "Pintado Amazônico",
+      quantity: "2 un",
+      details: "Tamanho juvenil"
+    },
+    {
+      species: "Carpa Filtradora",
       quantity: "10 un",
-      details: "Detalhes"
+      details: "Água termicamente controlada"
     }
   ],
   route: [
-    { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" }
+    { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
+    { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
+    { lat: -22.5516, lng: -43.6775, city: "Eng. Paulo de Frontin", state: "RJ" }
   ],
   statusLog: [
     {
       title: "Caminhão em Trânsito",
-      description: "O transporte com os tanques ativados partiu de Curitiba.",
+      description: "O transporte com os tanques ativados partiu de Curitiba e segue viagem rumo ao Rio de Janeiro.",
       time: "13:00",
       date: "25/05/2026",
       completed: true,
       active: true
+    },
+    {
+      title: "Aclimatação e Embarque",
+      description: "As tilápias, carpas e pintados foram devidamente aclimatados e os sistemas de oxigenação operam em capacidade ideal.",
+      time: "10:30",
+      date: "25/05/2026",
+      completed: true,
+      active: false
     }
   ]
 },
