@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { shipmentData, cleanCPF, formatCPF } from "./data";
 import TrackingMap from "./components/TrackingMap";
-import { Vehicle } from "./types";
+import { CargoItem } from "./types";
 
 export default function App() {
   // Navigation & Search State
@@ -39,7 +39,7 @@ export default function App() {
   const simulationIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Modal inspection checklists
-  const [selectedInspectionVehicle, setSelectedInspectionVehicle] = useState<Vehicle | null>(null);
+  const [selectedInspectionVehicle, setSelectedInspectionVehicle] = useState<CargoItem | null>(null);
 
   // Toast alert
   const [showToast, setShowToast] = useState(false);
@@ -52,7 +52,7 @@ export default function App() {
         setProgress((prev) => {
           if (prev >= 100) {
             setIsSimulating(false);
-            triggerToast("🎉 A cegonha chegou ao destino final em Ibiaí, MG!");
+            triggerToast("🎉 O caminhão chegou ao destino final em Iraquara, BA!");
             return 100;
           }
           // Increment speed
@@ -107,7 +107,7 @@ export default function App() {
       setProgress(2.5); // Reset back to Uruguaiana departure on load
       setIsSimulating(false);
       setSearchError("");
-      triggerToast("📡 Conexão GPS Estabelecida! Cegonha Localizada.");
+      triggerToast("📡 Conexão GPS Estabelecida! Caminhão Localizado.");
     } else if (cleaned.length === 0) {
       setSearchError("Por favor, preencha o número de CPF do cliente.");
     } else {
@@ -170,11 +170,11 @@ export default function App() {
               <Truck className="w-5 h-5 text-white" />
             </div>
             <div>
-              <span className="font-display font-bold tracking-tight text-lg sm:text-xl block text-blue-900 uppercase">
-                LOCALIZACAR <span className="font-light text-blue-600">CEGONHA</span>
+              <span className="font-display font-bold tracking-tight text-lg sm:text-xl block text-cyan-900 uppercase">
+                AGUATRANS <span className="font-light text-cyan-600">TRANS LOGÍSTICA</span>
               </span>
               <span className="text-[9px] uppercase font-mono font-bold tracking-[0.25em] text-slate-400 block -mt-1">
-                Logística Integrada &amp; Rastreamento
+                Transporte Seguro de Carga Viva
               </span>
             </div>
           </div>
@@ -216,10 +216,10 @@ export default function App() {
               </div>
               
               <h1 className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 mb-4">
-                Localize seu <span className="text-blue-600 uppercase">Veículo na Cegonha</span>
+                Localize sua <span className="text-cyan-600 uppercase">Carga Viva em Trânsito</span>
               </h1>
               <p className="text-slate-500 text-sm leading-relaxed font-medium">
-                Acompanhe o trajeto detalhado e relatórios de vistorias da carreta cegonha encarregada de sua entrega, com atualizações de GPS em tempo real.
+                Acompanhe o trajeto detalhado e os parâmetros da água da carreta encarregada do transporte dos animais, com atualizações em tempo real.
               </p>
             </div>
 
@@ -261,7 +261,7 @@ export default function App() {
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white font-display font-bold py-3 px-4 rounded shadow-sm transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-sm font-semibold tracking-tight"
                 >
                   <Compass className="w-4.5 h-4.5" />
-                  Rastrear Cegonha Atual
+                  Rastrear Caminhão
                 </button>
               </form>
             </div>
@@ -294,7 +294,7 @@ export default function App() {
                 <div className="space-y-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-[11px] font-mono tracking-widest font-extrabold text-blue-700 bg-blue-50 py-1 px-2.5 rounded border border-blue-200 uppercase">
-                      Manifesto Ativo #{activeShipment.cpf.slice(0,6)}-CEG
+                      Manifesto Ativo #{activeShipment.cpf.slice(0,6)}-AGUA
                     </span>
                     <span className={`text-[10px] font-bold py-1 px-2.5 rounded border tracking-wider font-display uppercase ${journeyStatus.color}`}>
                       {journeyStatus.label}
@@ -349,7 +349,7 @@ export default function App() {
                           Painel de Simulação GPS
                         </h4>
                         <p className="text-[11px] text-slate-500 mt-0.5 font-medium">
-                          Acompanhe o trajeto da cegonha em tempo real no painel de simulação.
+                          Acompanhe o trajeto do caminhão em tempo real no painel de simulação.
                         </p>
                       </div>
                       <div className="px-2 py-1 bg-slate-50 rounded border border-slate-200 flex items-center gap-1.5">
@@ -475,12 +475,12 @@ export default function App() {
                     {/* Simple summary strip data */}
                     <div className="grid grid-cols-2 gap-3 font-mono text-xs">
                       <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-0.5">
-                        <span className="text-[10px] text-slate-400 uppercase block font-bold">Placa Cegonha</span>
+                        <span className="text-[10px] text-slate-400 uppercase block font-bold">Placa do Caminhão</span>
                         <span className="text-slate-800 font-extrabold">{activeShipment.truckPlate.split(" ")[0]}</span>
                       </div>
                       <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-0.5">
-                        <span className="text-[10px] text-slate-400 uppercase block font-bold">Modelo Scania</span>
-                        <span className="text-slate-800 font-extrabold">R 450 - Tração Escorregadio</span>
+                        <span className="text-[10px] text-slate-400 uppercase block font-bold">Configuração</span>
+                        <span className="text-slate-800 font-extrabold">Tanque com Oxigenação</span>
                       </div>
                     </div>
 
@@ -502,36 +502,36 @@ export default function App() {
                   <div className="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 space-y-4 shadow-sm">
                     <div className="flex items-center justify-between">
                       <h3 className="text-sm font-display font-bold text-slate-800 flex items-center gap-2">
-                        <FileText className="w-4 h-4 text-blue-600" />
-                        Veículos Embarcados
+                        <FileText className="w-4 h-4 text-cyan-600" />
+                        Carga Viva Embarcada
                       </h3>
-                      <span className="text-xs font-mono font-extrabold text-blue-700 bg-blue-50 border border-blue-150 px-2 py-0.5 rounded">
-                        {activeShipment.vehicles.length} Itens
+                      <span className="text-xs font-mono font-extrabold text-cyan-700 bg-cyan-50 border border-cyan-150 px-2 py-0.5 rounded">
+                        {activeShipment.cargo.length} Espécies
                       </span>
                     </div>
 
                     <div className="space-y-3.5">
-                      {activeShipment.vehicles.map((car, idx) => (
+                      {activeShipment.cargo.map((item, idx) => (
                         <div 
                           key={idx} 
-                          className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-3 relative overflow-hidden group/card hover:border-blue-400 transition"
+                          className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-3 relative overflow-hidden group/card hover:border-cyan-400 transition"
                         >
                           <div className="flex items-start justify-between gap-2">
                             <div>
                               <span className="text-[9px] font-mono uppercase bg-white text-slate-600 border border-slate-200 px-1.5 py-0.5 rounded font-bold mb-1 inline-block">
-                                {car.brand}
+                                Animais Vivos
                               </span>
-                              <h4 className="text-xs font-display font-bold text-slate-900 group-hover/card:text-blue-700 transition">
-                                {car.model}
+                              <h4 className="text-xs font-display font-bold text-slate-900 group-hover/card:text-cyan-700 transition">
+                                {item.species}
                               </h4>
                               <p className="text-[10px] text-slate-500 mt-1 flex items-center gap-1 font-mono">
-                                Placa: <span className="font-bold text-slate-700">{car.plate}</span>  |  Cor: <span className="text-slate-700">{car.color}</span>
+                                Quantidade: <span className="font-bold text-slate-700">{item.quantity}</span>
                               </p>
                             </div>
                             
                             <div className="text-right">
-                              <span className="text-[10px] text-slate-400 font-mono block font-bold">Ano</span>
-                              <span className="text-xs font-bold text-slate-700 font-mono">{car.year}</span>
+                              <span className="text-[10px] text-slate-400 font-mono block font-bold">Detalhes</span>
+                              <span className="text-[9px] font-bold text-slate-700 font-mono max-w-[120px] inline-block">{item.details}</span>
                             </div>
                           </div>
 
@@ -542,7 +542,7 @@ export default function App() {
                             </span>
 
                             <button
-                              onClick={() => setSelectedInspectionVehicle(car)}
+                              onClick={() => setSelectedInspectionVehicle(item)}
                               className="text-[10px] font-display font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1 transition pr-1 pointer-events-auto cursor-pointer"
                             >
                               Ver Laudo Digital
@@ -623,10 +623,10 @@ export default function App() {
                               <span className="text-[8px] text-emerald-700 bg-emerald-50 border border-emerald-150 px-1.5 py-0.5 rounded font-display font-bold uppercase">Finalizado</span>
                             </span>
                             <h4 className="text-emerald-700 font-black font-display">
-                              Carro Entregue no Endereço Final
+                              Carga Entregue no Endereço Final
                             </h4>
                             <p className="text-slate-600 font-medium text-[11px]">
-                              A carreta cegonha estacionou com segurança em seu destino: <span className="text-amber-800 font-bold bg-amber-50 border border-amber-250 px-1.5 py-0.5 rounded">{activeShipment.destinationAddress}</span>. O veículo {activeShipment.vehicles[0]?.model || "cadastrado"} foi descarregado pranchado e entregue integralmente assinado pelo comprador.
+                              O caminhão estacionou com segurança em seu destino: <span className="text-amber-800 font-bold bg-amber-50 border border-amber-250 px-1.5 py-0.5 rounded">{activeShipment.destinationAddress}</span>. A carga foi inspecionada, os peixes descarregados saudáveis, e o documento foi integralmente assinado pelo comprador.
                             </p>
                           </div>
                         </div>
@@ -668,10 +668,10 @@ export default function App() {
                   Relatório Eletrônico de Vistoria
                 </span>
                 <h3 className="text-lg font-display font-bold text-slate-900 mt-1.5 animate-fadeIn">
-                  {selectedInspectionVehicle.model}
+                  {selectedInspectionVehicle.species}
                 </h3>
                 <p className="text-xs text-slate-500 flex items-center gap-1 font-mono">
-                  Placa: {selectedInspectionVehicle.plate} | Cor: {selectedInspectionVehicle.color}
+                  Quantidade: {selectedInspectionVehicle.quantity} | {selectedInspectionVehicle.details}
                 </p>
               </div>
 
@@ -685,27 +685,27 @@ export default function App() {
                   <div className="grid grid-cols-2 gap-2 text-[11px] leading-relaxed">
                     <div className="flex items-center gap-2 text-slate-600 font-semibold">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                      Pneus (Excelente estado)
+                      Nível de Oxigênio (95%)
                     </div>
                     <div className="flex items-center gap-2 text-slate-600 font-semibold">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                      Chave Reserva Integrada
+                      Temperatura da Água (18°C)
                     </div>
                     <div className="flex items-center gap-2 text-slate-600 font-semibold">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                      Manuais e Garantias
+                      pH Balanceado (7.2)
                     </div>
                     <div className="flex items-center gap-2 text-slate-600 font-semibold">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                      Pintura Sem Riscos Rígidos
+                      Sistemas de Filtragem Ativos
                     </div>
                     <div className="flex items-center gap-2 text-slate-600 font-semibold">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                      Estepe / Kit Ferramenta
+                      Comportamento Saudável
                     </div>
                     <div className="flex items-center gap-2 text-slate-600 font-semibold">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                      Nível de Fluidos Ok
+                      Aclimatização Concluída
                     </div>
                   </div>
                 </div>
@@ -738,7 +738,7 @@ export default function App() {
       <footer className="border-t border-slate-200 bg-white py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <p className="text-xs text-slate-400 font-medium font-sans">
-            &copy; 2026 <span className="text-slate-700 font-bold font-display uppercase">LOCALIZACAR CEGONHA</span>. Todos os direitos reservados.
+            &copy; 2026 <span className="text-slate-700 font-bold font-display uppercase">AGUATRANS TRANS LOGISTICA</span>. Todos os direitos reservados.
           </p>
           <div className="flex justify-center gap-4 text-[9px] font-mono text-slate-400 uppercase tracking-widest font-bold">
             <span className="hover:text-blue-600 transition duration-150 cursor-pointer">Privacidade</span>

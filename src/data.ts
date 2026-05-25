@@ -1,59 +1,66 @@
 import { Shipment } from "./types";
 
 export const shipmentData: Shipment = {
-  cpf: "42751301894",
-  customerName: "Pedro Henrique de Oliveira Cunha",
-  customerEmail: "pedrohenrique@email.com",
+  cpf: "86707455508",
+  customerName: "Antonio Pereira dos Santos",
+  customerEmail: "",
   driverName: "Marcos Aurélio Silveira",
   driverPhone: "+55 (55) 99182-4432",
-  truckPlate: "CEG-4D89 (Scania R 450)",
-  origin: "Rio Grande do Sul",
-  destination: "Poá, SP",
-  destinationAddress: "Rua Marquês do Herval, número 333, Bairro Jardim Medina, Poá - SP, CEP: 08556-400",
-  currentCity: "Porto Alegre",
-  currentState: "RS",
-  totalDistanceKm: 1150,
+  truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+  origin: "Curitiba, PR (Aguavita)",
+  destination: "Iraquara, BA",
+  destinationAddress: "Posto a entrada do mato preto, o lavarapido do hulk, Iraquara - BA, CEP: 46980-000",
+  currentCity: "Curitiba",
+  currentState: "PR",
+  totalDistanceKm: 2150,
   coveredDistanceKm: 15,
   estimatedDays: 4,
-  departureDate: "23/05/2026",
-  vehicles: [
+  departureDate: "25/05/2026",
+  cargo: [
     {
-      model: "Astra",
-      brand: "Chevrolet",
-      color: "Prata",
-      plate: "XXX0000",
-      year: 2010,
-      condition: "Excelente"
+      species: "Carpa Capim",
+      quantity: "20 un",
+      details: "Alevinos saudáveis, oxigenação 95%"
+    },
+    {
+      species: "Tambaçu",
+      quantity: "15 un",
+      details: "Tamanho juvenil, água termicamente controlada"
+    },
+    {
+      species: "Carpas Coloridas (Nishikigoi)",
+      quantity: "Lote Diversas",
+      details: "Alta pureza de cores, acondicionamento especial"
     }
   ],
   route: [
-    { lat: -30.0346, lng: -51.2177, city: "Porto Alegre", state: "RS" },
     { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
     { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
-    { lat: -23.5284, lng: -46.3458, city: "Poá", state: "SP" }
+    { lat: -19.9208, lng: -43.9378, city: "Belo Horizonte", state: "MG" },
+    { lat: -12.2479, lng: -41.6146, city: "Iraquara", state: "BA" }
   ],
   statusLog: [
     {
-      title: "Cegonha em Trânsito",
-      description: "A cegonha está saindo do Rio Grande do Sul e a caminho do destino em São Paulo.",
+      title: "Caminhão em Trânsito",
+      description: "O transporte com os tanques ativados partiu de Curitiba e segue viagem rumo a Iraquara.",
       time: "13:00",
-      date: "23/05/2026",
+      date: "25/05/2026",
       completed: true,
       active: true
     },
     {
-      title: "Carga Pronta para Viagem",
-      description: "O veículo integrado ao manifesto de carga foi devidamente fixado e testado contra vibração. Amarração concluída.",
+      title: "Aclimatação e Embarque",
+      description: "Os peixes foram devidamente aclimatados e os sistemas de oxigenação e filtragem do caminhão-tanque operam em capacidade ideal.",
       time: "10:30",
-      date: "23/05/2026",
+      date: "25/05/2026",
       completed: true,
       active: false
     },
     {
-      title: "Coleta e Inspeção de Entrada",
-      description: "Vistoria veicular detalhada realizada no Chevrolet Astra no Rio Grande do Sul com fotos anexadas ao laudo técnico de inspeção.",
+      title: "Vistoria da Qualidade da Água",
+      description: "Laudo técnico confirma pH e níveis de oxigênio dissolvido dentro dos parâmetros exigidos para as espécies transportadas.",
       time: "09:45",
-      date: "23/05/2026",
+      date: "25/05/2026",
       completed: true,
       active: false
     }

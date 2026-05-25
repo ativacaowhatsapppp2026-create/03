@@ -1,10 +1,7 @@
-export interface Vehicle {
-  model: string;
-  brand: string;
-  color: string;
-  plate: string;
-  year: number;
-  condition: string;
+export interface CargoItem {
+  species: string;
+  quantity: string;
+  details: string;
 }
 
 export interface Waypoint {
@@ -35,7 +32,7 @@ export interface Shipment {
   destinationAddress: string;
   currentCity: string;
   currentState: string;
-  vehicles: Vehicle[];
+  cargo: CargoItem[];
   route: Waypoint[];
   statusLog: TrackingStatus[];
   totalDistanceKm: number;

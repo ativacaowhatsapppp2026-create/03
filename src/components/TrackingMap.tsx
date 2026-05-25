@@ -164,23 +164,23 @@ export default function TrackingMap({ route, progress }: TrackingMapProps) {
       }).addTo(map);
     }
 
-    // Custom Cegonha carrier truck marker
+    // Custom Live Cargo truck marker
     const truckIcon = L.divIcon({
       className: "custom-div-icon",
       html: `
         <div class="flex flex-col items-center">
-          <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-700 to-blue-500 text-white flex items-center justify-center border-2 border-white shadow-[0_0_12px_rgba(37,99,235,0.4)] relative">
-            <div class="absolute -inset-1.5 bg-blue-500/30 rounded-full animate-ping"></div>
-            <!-- Car carrier truck icon inline SVG -->
+          <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-700 to-cyan-500 text-white flex items-center justify-center border-2 border-white shadow-[0_0_12px_rgba(6,182,212,0.4)] relative">
+            <div class="absolute -inset-1.5 bg-cyan-500/30 rounded-full animate-ping"></div>
+            <!-- Standard truck SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
-              <path d="M19 18h2a1 1 0 0 0 1-1v-5.14a1 1 0 0 0-.293-.707l-4.07-4.071A1 1 0 0 0 17 7h-3"/>
-              <circle cx="7" cy="18" r="2"/>
-              <circle cx="17" cy="18" r="2"/>
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
             </svg>
           </div>
-          <div class="text-[8px] font-extrabold font-mono tracking-wider bg-blue-600 text-white px-1.5 mt-0.5 rounded shadow whitespace-nowrap uppercase border border-blue-400">
-            Cegonha (${progress.toFixed(0)}%)
+          <div class="text-[8px] font-extrabold font-mono tracking-wider bg-cyan-600 text-white px-1.5 mt-0.5 rounded shadow whitespace-nowrap uppercase border border-cyan-400">
+            Caminhão (${progress.toFixed(0)}%)
           </div>
         </div>
       `,
