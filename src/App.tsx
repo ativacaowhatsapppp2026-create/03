@@ -23,15 +23,15 @@ import {
   HelpCircle,
   QrCode
 } from "lucide-react";
-import { shipmentData, cleanCPF, formatCPF } from "./data";
+import { shipmentsData, cleanCPF, formatCPF } from "./data";
 import TrackingMap from "./components/TrackingMap";
-import { CargoItem } from "./types";
+import { CargoItem, Shipment } from "./types";
 
 export default function App() {
   // Navigation & Search State
   const [cpfInput, setCpfInput] = useState("");
   const [searchError, setSearchError] = useState("");
-  const [activeShipment, setActiveShipment] = useState<typeof shipmentData | null>(null);
+  const [activeShipment, setActiveShipment] = useState<Shipment | null>(null);
 
   // Simulation State
   const [progress, setProgress] = useState(2.3); // Start at ~2.3% (Acabou de sair de Uruguaiana)
@@ -102,8 +102,9 @@ export default function App() {
     e.preventDefault();
     const cleaned = cleanCPF(cpfInput);
 
-    if (cleaned === shipmentData.cpf) {
-      setActiveShipment(shipmentData);
+    const found = shipmentsData.find(s => cleanCPF(s.cpf) === cleaned);
+    if (found) {
+      setActiveShipment(found);
       setProgress(2.5); // Reset back to Uruguaiana departure on load
       setIsSimulating(false);
       setSearchError("");
@@ -116,7 +117,7 @@ export default function App() {
   };
 
   // Calculate dynamic telemetry based on progress
-  const totalDist = shipmentData.totalDistanceKm;
+  const totalDist = activeShipment ? activeShipment.totalDistanceKm : 0;
   const currentCoveredDist = Math.max(
     45, 
     Math.round((progress / 100) * totalDist)
@@ -128,13 +129,13 @@ export default function App() {
   const daysRemaining = (hoursRemaining / 24).toFixed(1);
 
   // Dynamic Waypoint finding based on progress index
-  const routePoints = shipmentData.route;
+  const routePoints = activeShipment ? activeShipment.route : [];
   const currentWaypointIndex = Math.min(
     Math.floor((progress / 100) * routePoints.length),
     routePoints.length - 1
   );
-  const currentPassingCity = routePoints[currentWaypointIndex]?.city || activeShipment.currentCity;
-  const currentPassingState = routePoints[currentWaypointIndex]?.state || activeShipment.currentState;
+  const currentPassingCity = activeShipment ? (routePoints[currentWaypointIndex]?.city || activeShipment.currentCity) : "";
+  const currentPassingState = activeShipment ? (routePoints[currentWaypointIndex]?.state || activeShipment.currentState) : "";
 
   // Dynamic active status checkpoint calculation
   const getTimelineStatus = (pct: number) => {

@@ -1,6 +1,7 @@
 import { Shipment } from "./types";
 
-export const shipmentData: Shipment = {
+export const shipmentsData: Shipment[] = [
+{
   cpf: "86707455508",
   customerName: "Antonio Pereira dos Santos",
   customerEmail: "",
@@ -65,7 +66,82 @@ export const shipmentData: Shipment = {
       active: false
     }
   ]
-};
+},
+{
+  cpf: "11111111111",
+  customerName: "[Cliente 2]",
+  customerEmail: "",
+  driverName: "Marcos Aurélio Silveira",
+  driverPhone: "+55 (55) 99182-4432",
+  truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+  origin: "Curitiba, PR (Aguavita)",
+  destination: "Destino 2",
+  destinationAddress: "Endereço 2",
+  currentCity: "Curitiba",
+  currentState: "PR",
+  totalDistanceKm: 1000,
+  coveredDistanceKm: 15,
+  estimatedDays: 2,
+  departureDate: "25/05/2026",
+  cargo: [
+    {
+      species: "Peixe X",
+      quantity: "10 un",
+      details: "Detalhes"
+    }
+  ],
+  route: [
+    { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" }
+  ],
+  statusLog: [
+    {
+      title: "Caminhão em Trânsito",
+      description: "O transporte com os tanques ativados partiu de Curitiba.",
+      time: "13:00",
+      date: "25/05/2026",
+      completed: true,
+      active: true
+    }
+  ]
+},
+{
+  cpf: "22222222222",
+  customerName: "[Cliente 3]",
+  customerEmail: "",
+  driverName: "Marcos Aurélio Silveira",
+  driverPhone: "+55 (55) 99182-4432",
+  truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+  origin: "Curitiba, PR (Aguavita)",
+  destination: "Destino 3",
+  destinationAddress: "Endereço 3",
+  currentCity: "Curitiba",
+  currentState: "PR",
+  totalDistanceKm: 1500,
+  coveredDistanceKm: 15,
+  estimatedDays: 3,
+  departureDate: "25/05/2026",
+  cargo: [
+    {
+      species: "Peixe Y",
+      quantity: "50 un",
+      details: "Detalhes"
+    }
+  ],
+  route: [
+    { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" }
+  ],
+  statusLog: [
+    {
+      title: "Caminhão em Trânsito",
+      description: "O transporte com os tanques ativados partiu de Curitiba.",
+      time: "13:00",
+      date: "25/05/2026",
+      completed: true,
+      active: true
+    }
+  ]
+}
+];
 
 export function cleanCPF(cpf: string): string {
   return cpf.replace(/\D/g, "");
