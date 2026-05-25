@@ -318,7 +318,7 @@ export default function App() {
                   <div className="text-right">
                     <span className="text-[10px] text-slate-400 font-mono uppercase block leading-none font-bold">Previsão Estimada</span>
                     <span className="text-lg font-bold text-blue-600 mt-0.5 block">
-                      {progress >= 100 ? "🚚 Entregue!" : "Até 22/05/2026"}
+                      {progress >= 100 ? "🚚 Entregue!" : "Até 27/05/2026"}
                     </span>
                     <span className="text-[10px] text-slate-400 block -mt-0.5 font-medium">
                       {progress >= 100 ? "Viagem concluída" : "Prazo Limite de Entrega"}
