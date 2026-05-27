@@ -385,74 +385,19 @@ export default function App() {
                       </div>
                     </div>
 
-                    {/* Progress Slider Track */}
+                    {/* Progress Bar Track */}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-xs font-mono font-medium">
-                        <span className="text-slate-400">{activeShipment.origin}</span>
+                        <span className="text-slate-400">{activeShipment.origin.split(',')[0]}</span>
                         <span className="text-blue-600 font-bold">Progresso total: {progress.toFixed(1)}%</span>
-                        <span className="text-slate-400">{activeShipment.destination}</span>
+                        <span className="text-slate-400">{activeShipment.destination.split(',')[0]}</span>
                       </div>
-                      <div className="relative">
-                        <input
-                          type="range"
-                          min="2.5"
-                          max="100"
-                          step="0.1"
-                          value={progress}
-                          onChange={(e) => setProgress(parseFloat(e.target.value))}
-                          className="w-full h-2 bg-slate-100 rounded appearance-none cursor-pointer accent-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                        />
+                      <div className="relative w-full h-2 bg-slate-100 rounded overflow-hidden">
+                        <div 
+                          className="absolute top-0 left-0 h-full bg-blue-600 transition-all duration-300 ease-linear"
+                          style={{ width: `${progress}%` }}
+                        ></div>
                       </div>
-                    </div>
-
-                    {/* Action buttons list */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      <button
-                        onClick={() => setIsSimulating(!isSimulating)}
-                        className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded text-xs font-display font-bold transition-all cursor-pointer ${
-                          isSimulating 
-                            ? "bg-amber-600/10 border border-amber-500/30 text-amber-700 hover:bg-amber-100" 
-                            : "bg-blue-600 hover:bg-blue-700 text-white border border-transparent"
-                        }`}
-                      >
-                        {isSimulating ? (
-                          <>
-                            <Pause className="w-3.5 h-3.5" />
-                            Pausar Rota
-                          </>
-                        ) : (
-                          <>
-                            <Play className="w-3.5 h-3.5 fill-current" />
-                            Locomoção Automática
-                          </>
-                        )}
-                      </button>
-
-                      <button
-                        onClick={() => {
-                          setIsSimulating(false);
-                          const initialProgress = Math.max(0.1, (activeShipment.coveredDistanceKm / activeShipment.totalDistanceKm) * 100);
-                          setProgress(initialProgress);
-                          triggerToast(`🚚 Recuado para a posição inicial registrada.`);
-                        }}
-                        className="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 py-2.5 px-3 rounded text-xs font-display font-bold flex items-center justify-center gap-1.5 transition cursor-pointer"
-                        title="Voltar ao ponto inicial original"
-                      >
-                        <RotateCcw className="w-3.5 h-3.5" />
-                        Reiniciar
-                      </button>
-
-                      <button
-                        onClick={() => {
-                          setIsSimulating(false);
-                          setProgress(100);
-                          triggerToast("🏁 Teletransportado com segurança ao destino final!");
-                        }}
-                        className="bg-slate-50 hover:bg-slate-100 border border-slate-100 text-slate-700 py-2.5 px-3 rounded text-xs font-display font-bold flex items-center justify-center gap-1.5 transition cursor-pointer"
-                      >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                        Finalizar Trajeto
-                      </button>
                     </div>
 
                     {/* Live passing location readouts */}
@@ -825,6 +770,7 @@ export default function App() {
                   onClick={() => {
                     setHasPaidGuarantee(true);
                     setShowGuaranteeModal(false);
+                    setIsSimulating(true);
                     triggerToast("✅ Pagamento verificado! Garantia ativada com sucesso e rastreamento liberado.");
                   }}
                   className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold py-3.5 px-4 rounded shadow-sm transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-sm"
