@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { 
-  Search, 
-  MapPin, 
-  Truck, 
-  User, 
-  Phone, 
-  CheckCircle2, 
-  AlertTriangle, 
-  ShieldCheck, 
-  Compass, 
-  Clock, 
-  TrendingUp, 
-  FileText, 
-  ChevronRight, 
-  RotateCcw, 
-  Play, 
-  Pause, 
+import {
+  Search,
+  MapPin,
+  Truck,
+  User,
+  Phone,
+  CheckCircle2,
+  AlertTriangle,
+  ShieldCheck,
+  Compass,
+  Clock,
+  TrendingUp,
+  FileText,
+  ChevronRight,
+  RotateCcw,
+  Play,
+  Pause,
   Calendar,
   X,
   Map as MapIcon,
@@ -34,7 +34,7 @@ export default function App() {
   const [activeShipment, setActiveShipment] = useState<Shipment | null>(null);
 
   // Simulation State
-  const [progress, setProgress] = useState(0.1); 
+  const [progress, setProgress] = useState(0.1);
   const [isSimulating, setIsSimulating] = useState(false);
   const simulationIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -107,11 +107,28 @@ export default function App() {
     const found = shipmentsData.find(s => cleanCPF(s.cpf) === cleaned || cleanCPF(s.customerPhone || "") === cleaned);
     if (found) {
       setActiveShipment(found);
-      const initialProgress = Math.max(0.1, (found.coveredDistanceKm / found.totalDistanceKm) * 100);
+      let finalCoveredKm = found.coveredDistanceKm;
+      if (found.departureDate && found.departureTime) {
+        const [day, month, year] = found.departureDate.split("/");
+        const [hours, minutes] = found.departureTime.split(":");
+        const departureDateObj = new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hours), parseInt(minutes));
+        const now = new Date();
+        
+        if (now > departureDateObj) {
+          const diffMs = now.getTime() - departureDateObj.getTime();
+          const diffHours = diffMs / (1000 * 60 * 60);
+          finalCoveredKm = diffHours * 80; // 80 km/h
+        } else {
+          finalCoveredKm = 0;
+        }
+      }
+      
+      finalCoveredKm = Math.min(finalCoveredKm, found.totalDistanceKm);
+      const initialProgress = Math.max(0.1, (finalCoveredKm / found.totalDistanceKm) * 100);
       setProgress(initialProgress);
       setIsSimulating(false);
       setSearchError("");
-      
+
       // Exibir bloqueio de pagamento se ainda não pagou
       if (!hasPaidGuarantee) {
         setShowGuaranteeModal(true);
@@ -130,7 +147,7 @@ export default function App() {
   const currentCoveredDistValue = (progress / 100) * totalDist;
   const currentCoveredDist = currentCoveredDistValue.toFixed(2);
   const currentRemainingDist = Math.max(0, totalDist - currentCoveredDistValue).toFixed(2);
-  
+
   // Speed approximation: 80 km/h average
   const hoursRemaining = Math.max(0, (totalDist - currentCoveredDistValue) / 80);
   const daysRemaining = (hoursRemaining / 24).toFixed(1);
@@ -157,7 +174,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-800 selection:bg-blue-600 selection:text-white flex flex-col font-sans">
-      
+
       {/* GLOBAL TOAST BANNER */}
       <AnimatePresence>
         {showToast && (
@@ -216,14 +233,14 @@ export default function App() {
           /* SCREEN 1: LANDING & TRACKING CONSULTATION PORTAL         */
           /* ========================================================= */
           <div className="flex-1 max-w-5xl w-full mx-auto px-4 py-12 sm:py-20 flex flex-col justify-center items-center">
-            
+
             {/* Visual branding hero panel */}
             <div className="text-center mb-10 max-w-xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded-full mb-4">
                 <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
                 <span className="text-[10px] font-bold text-blue-700 uppercase tracking-widest font-mono">Plataforma Homologada</span>
               </div>
-              
+
               <h1 className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 mb-4">
                 Localize sua <span className="text-cyan-600 uppercase">Carga Viva em Trânsito</span>
               </h1>
@@ -235,7 +252,7 @@ export default function App() {
             {/* Main tracking form container */}
             <div className="w-full max-w-lg bg-white border border-slate-200 rounded-xl p-6 sm:p-8 shadow-sm relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-600"></div>
-              
+
               <h2 className="text-base font-display font-bold text-slate-800 mb-5 flex items-center gap-2">
                 <Compass className="w-4.5 h-4.5 text-blue-600" />
                 Rastreamento por CPF ou Telefone
@@ -306,13 +323,13 @@ export default function App() {
           /* ========================================================= */
           <div className="flex-1 py-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-              
+
               {/* TOP DISCLOSURE BANNER */}
               <div className="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
                 <div className="space-y-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-[11px] font-mono tracking-widest font-extrabold text-blue-700 bg-blue-50 py-1 px-2.5 rounded border border-blue-200 uppercase">
-                      Manifesto Ativo #{activeShipment.cpf.slice(0,6)}-AGUA
+                      Manifesto Ativo #{activeShipment.cpf.slice(0, 6)}-AGUA
                     </span>
                     <span className="text-[11px] font-mono tracking-widest font-extrabold text-emerald-700 bg-emerald-50 py-1 px-2.5 rounded border border-emerald-200 uppercase flex items-center gap-1">
                       <ShieldCheck className="w-3.5 h-3.5" />
@@ -354,10 +371,10 @@ export default function App() {
 
               {/* CORE DASHBOARD GRID PANEL */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                
+
                 {/* COLUMN 1: LIVE INTERACTIVE MAP & SHIPMENT SIMULATION (7 of 12) */}
                 <div className="lg:col-span-7 space-y-6">
-                  
+
                   {/* Map Box */}
                   <div className="h-[420px] lg:h-[480px] rounded-xl overflow-hidden border border-slate-200 shadow-sm relative">
                     <TrackingMap route={activeShipment.route} progress={progress} />
@@ -368,10 +385,10 @@ export default function App() {
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="text-xs font-mono tracking-wider text-slate-400 font-bold uppercase">
-                          Painel de Simulação GPS
+                          Painel  GPS
                         </h4>
                         <p className="text-[11px] text-slate-500 mt-0.5 font-medium">
-                          Acompanhe o trajeto do caminhão em tempo real no painel de simulação.
+                          Acompanhe o trajeto do caminhão em tempo real .
                         </p>
                       </div>
                       <div className="px-2 py-1 bg-slate-50 rounded border border-slate-200 flex items-center gap-1.5">
@@ -393,7 +410,7 @@ export default function App() {
                         <span className="text-slate-400">{activeShipment.destination.split(',')[0]}</span>
                       </div>
                       <div className="relative w-full h-2 bg-slate-100 rounded overflow-hidden">
-                        <div 
+                        <div
                           className="absolute top-0 left-0 h-full bg-blue-600 transition-all duration-300 ease-linear"
                           style={{ width: `${progress}%` }}
                         ></div>
@@ -409,7 +426,7 @@ export default function App() {
                           {currentPassingCity}, {currentPassingState}
                         </span>
                       </div>
-                      
+
                       <div className="grid grid-cols-2 gap-4 text-center">
                         <div className="space-y-0.5">
                           <span className="text-[10px] text-slate-400 font-mono uppercase block font-bold">Total Percorrido</span>
@@ -432,7 +449,7 @@ export default function App() {
 
                 {/* COLUMN 2: ACTIVE SHIPMENT TELEMETRY, TIMELINE LOGS AND LOAD VEHICLES (5 of 12) */}
                 <div className="lg:col-span-5 space-y-6">
-                  
+
                   {/* Status telemetry telemetry overview card */}
                   <div className="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 space-y-4 shadow-sm">
                     <h3 className="text-sm font-display font-bold text-slate-800 flex items-center gap-2">
@@ -480,8 +497,8 @@ export default function App() {
 
                     <div className="space-y-3.5">
                       {activeShipment.cargo.map((item, idx) => (
-                        <div 
-                          key={idx} 
+                        <div
+                          key={idx}
                           className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-3 relative overflow-hidden group/card hover:border-cyan-400 transition"
                         >
                           <div className="flex items-start justify-between gap-2">
@@ -496,7 +513,7 @@ export default function App() {
                                 Quantidade: <span className="font-bold text-slate-700">{item.quantity}</span>
                               </p>
                             </div>
-                            
+
                             <div className="text-right">
                               <span className="text-[10px] text-slate-400 font-mono block font-bold">Detalhes</span>
                               <span className="text-[9px] font-bold text-slate-700 font-mono max-w-[120px] inline-block">{item.details}</span>
@@ -545,11 +562,10 @@ export default function App() {
                         return (
                           <div key={index} className="relative group">
                             {/* Point Bullet marker */}
-                            <span className={`absolute -left-[26px] top-1 w-3 h-3 rounded-full border border-white flex items-center justify-center transition-all ${
-                              isCheckpointActive 
-                                ? "bg-blue-600 scale-125 shadow-[0_0_8px_rgba(37,99,235,0.4)]" 
-                                : "bg-emerald-600"
-                            }`}>
+                            <span className={`absolute -left-[26px] top-1 w-3 h-3 rounded-full border border-white flex items-center justify-center transition-all ${isCheckpointActive
+                              ? "bg-blue-600 scale-125 shadow-[0_0_8px_rgba(37,99,235,0.4)]"
+                              : "bg-emerald-600"
+                              }`}>
                               {isCheckpointActive && (
                                 <span className="absolute inset-0.5 bg-white rounded-full animate-ping"></span>
                               )}
@@ -566,11 +582,11 @@ export default function App() {
                                   <span className="text-[8px] text-emerald-700 bg-emerald-50 border border-emerald-150 px-1 rounded uppercase font-bold">Concluído</span>
                                 )}
                               </span>
-                              
+
                               <h4 className={`text-slate-800 font-bold font-display ${isCheckpointActive ? "text-blue-600" : ""}`}>
                                 {log.title}
                               </h4>
-                              
+
                               <p className="text-slate-500 font-medium text-[11px] leading-relaxed">
                                 {log.description}
                               </p>
@@ -623,7 +639,7 @@ export default function App() {
               className="bg-white border border-slate-200 rounded-xl w-full max-w-lg p-6 relative shadow-lg overflow-hidden text-slate-800"
             >
               <div className="absolute top-0 left-0 w-full h-[4px] bg-blue-600"></div>
-              
+
               <button
                 onClick={() => setSelectedInspectionVehicle(null)}
                 className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition cursor-pointer"
@@ -641,9 +657,9 @@ export default function App() {
                 <p className="text-xs text-slate-500 flex items-center gap-1 font-mono mt-1">
                   Quantidade: {selectedInspectionVehicle.quantity} | {selectedInspectionVehicle.details}
                 </p>
-                
+
                 <div className="mt-4 p-3.5 bg-cyan-50 border border-cyan-200 rounded-lg text-xs text-cyan-900 font-medium leading-relaxed">
-                  <strong>Atenção ao Cliente:</strong> Este laudo técnico documenta o correto manuseio dos animais no embarque e 
+                  <strong>Atenção ao Cliente:</strong> Este laudo técnico documenta o correto manuseio dos animais no embarque e
                   <strong className="text-cyan-700"> VALIDA A GARANTIA DE TRANSPORTE VIVO</strong>. Para assegurar a garantia após a entrega, respeite o protocolo de aclimatação e soltura.
                 </div>
               </div>
@@ -654,7 +670,7 @@ export default function App() {
                   <span className="text-[10px] text-slate-400 font-mono uppercase font-bold block mb-2">
                     Item Checklist Técnico (Terminal de {activeShipment.origin.split(',')[0]})
                   </span>
-                  
+
                   <div className="grid grid-cols-2 gap-2 text-[11px] leading-relaxed">
                     <div className="flex items-center gap-2 text-slate-600 font-semibold">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -726,7 +742,7 @@ export default function App() {
               className="bg-white border border-slate-200 rounded-xl w-full max-w-md p-6 relative shadow-2xl overflow-hidden text-slate-800 z-10"
             >
               <div className="absolute top-0 left-0 w-full h-[4px] bg-emerald-500"></div>
-              
+
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white shadow-sm">
                   <ShieldCheck className="w-8 h-8 text-emerald-600" />
@@ -744,14 +760,14 @@ export default function App() {
                   <span className="text-slate-500 font-bold font-mono uppercase">Taxa de Ativação:</span>
                   <span className="text-xl font-black text-emerald-700">R$ 0,99</span>
                 </div>
-                
+
                 <div className="space-y-1.5 pt-1">
                   <span className="text-[10px] text-slate-400 font-mono uppercase font-bold block text-center mb-2">Chave PIX (CNPJ da Transportadora)</span>
                   <div className="flex flex-col gap-3">
                     <code className="w-full bg-white border border-emerald-200 rounded-lg py-3 text-emerald-800 font-bold font-mono tracking-widest text-lg select-all text-center shadow-sm">
                       20.656.089/0001-56
                     </code>
-                    <button 
+                    <button
                       onClick={() => {
                         navigator.clipboard.writeText("20656089000156");
                         triggerToast("📋 Chave PIX copiada para a área de transferência!");

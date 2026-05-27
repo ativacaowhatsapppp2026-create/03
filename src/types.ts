@@ -40,4 +40,5 @@ export interface Shipment {
   coveredDistanceKm: number;
   estimatedDays: number;
   departureDate: string;
+  departureTime?: string;
 }

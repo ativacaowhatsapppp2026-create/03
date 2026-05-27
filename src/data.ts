@@ -17,7 +17,8 @@ export const shipmentsData: Shipment[] = [
     totalDistanceKm: 300,
     coveredDistanceKm: 15,
     estimatedDays: 1,
-    departureDate: "26/05/2026",
+    departureDate: "27/05/2026",
+    departureTime: "09:00",
     cargo: [
       { species: "Carpa Húngara", quantity: "200 un", details: "Valor: R$ 67,50" },
       { species: "Pangasius (Pangabr)", quantity: "30 un", details: "Valor: R$ 90,00" },
@@ -60,7 +61,8 @@ export const shipmentsData: Shipment[] = [
     totalDistanceKm: 320,
     coveredDistanceKm: 15,
     estimatedDays: 1,
-    departureDate: "26/05/2026",
+    departureDate: "27/05/2026",
+    departureTime: "09:00",
     cargo: [
       { species: "Carpa Nishikigoi (4 a 7 cm)", quantity: "30 un", details: "Valor: R$ 56,10" }
     ],
@@ -96,7 +98,8 @@ export const shipmentsData: Shipment[] = [
     totalDistanceKm: 250,
     coveredDistanceKm: 15,
     estimatedDays: 1,
-    departureDate: "26/05/2026",
+    departureDate: "27/05/2026",
+    departureTime: "09:00",
     cargo: [
       { species: "Tilápia Tailandesa (4 a 6 cm)", quantity: "1.000 un", details: "Valor: R$ 187,50" },
       { species: "Trairão do Amazonas (3 a 4 cm)", quantity: "100 un", details: "Valor: R$ 187,50" },
@@ -134,7 +137,8 @@ export const shipmentsData: Shipment[] = [
     totalDistanceKm: 280,
     coveredDistanceKm: 15,
     estimatedDays: 1,
-    departureDate: "26/05/2026",
+    departureDate: "27/05/2026",
+    departureTime: "09:00",
     cargo: [
       { species: "Carpa Cabeça Grande", quantity: "200 un", details: "Valor: R$ 700,00" }
     ],
@@ -169,7 +173,8 @@ export const shipmentsData: Shipment[] = [
     totalDistanceKm: 350,
     coveredDistanceKm: 15,
     estimatedDays: 1,
-    departureDate: "26/05/2026",
+    departureDate: "27/05/2026",
+    departureTime: "09:00",
     cargo: [
       { species: "Trairão do Amazonas", quantity: "100 un", details: "Valor: R$ 187,50" },
       { species: "Tambaqui", quantity: "100 un", details: "Valor: R$ 24,00" },
@@ -207,7 +212,8 @@ export const shipmentsData: Shipment[] = [
     totalDistanceKm: 280,
     coveredDistanceKm: 15,
     estimatedDays: 1,
-    departureDate: "26/05/2026",
+    departureDate: "27/05/2026",
+    departureTime: "09:00",
     cargo: [
       { species: "Tambaqui (3 a 4 cm)", quantity: "3.000 un", details: "Valor: R$ 720,00" }
     ],
@@ -242,7 +248,8 @@ export const shipmentsData: Shipment[] = [
     totalDistanceKm: 320,
     coveredDistanceKm: 15,
     estimatedDays: 1,
-    departureDate: "26/05/2026",
+    departureDate: "27/05/2026",
+    departureTime: "09:00",
     cargo: [
       { species: "Tambaçu", quantity: "500 un", details: "Valor: R$ 120,00" },
       { species: "Matrinxã", quantity: "500 un", details: "Valor: R$ 131,25" },
@@ -279,7 +286,8 @@ export const shipmentsData: Shipment[] = [
     totalDistanceKm: 270,
     coveredDistanceKm: 15,
     estimatedDays: 1,
-    departureDate: "08/06/2026",
+    departureDate: "27/05/2026",
+    departureTime: "09:00",
     cargo: [
       { species: "Kinguio 6 cm", quantity: "25 un", details: "Valor: R$ 75,00" },
       { species: "Telescópio 6 cm", quantity: "22 un", details: "Valor: R$ 66,00" },
