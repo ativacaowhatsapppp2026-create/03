@@ -426,6 +426,7 @@ export default function App() {
 
                   </div>
 
+
                 </div>
 
                 {/* COLUMN 2: ACTIVE SHIPMENT TELEMETRY, TIMELINE LOGS AND LOAD VEHICLES (5 of 12) */}
