@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aguatrans - Download do Aplicativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+      color: #f1f5f9;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2.5rem;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(14, 165, 233, 0.3);
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    .icon-wrapper svg {
+      width: 40px;
+      height: 40px;
+      color: white;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 8px 32px rgba(14, 165, 233, 0.3); }
+      50% { box-shadow: 0 8px 48px rgba(14, 165, 233, 0.5); }
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.025em;
+    }
+
+    h1 span {
+      color: #38bdf8;
+    }
+
+    .subtitle {
+      font-size: 0.875rem;
+      color: #94a3b8;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .progress-container {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #334155;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+      border-radius: 999px;
+      width: 0%;
+      animation: fill-progress 2.5s ease-in-out forwards;
+    }
+
+    @keyframes fill-progress {
+      0% { width: 0%; }
+      30% { width: 40%; }
+      60% { width: 70%; }
+      90% { width: 95%; }
+      100% { width: 100%; }
+    }
+
+    .status {
+      font-size: 0.8rem;
+      color: #10b981;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fade-in 0.5s ease forwards;
+      animation-delay: 2.5s;
+    }
+
+    .status .dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: blink 1s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .manual-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .manual-btn:hover {
+      background: #0284c7;
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 0.65rem;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="icon-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+    </div>
+
+    <h1><span>Aguatrans</span> App</h1>
+    <p class="subtitle">O download do aplicativo será iniciado automaticamente. Aguarde alguns instantes.</p>
+
+    <div class="progress-container">
+      <div class="progress-label">
+        <span>Preparando download...</span>
+        <span id="pct">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="status" id="statusMsg">
+      <span class="dot"></span>
+      Download iniciado com sucesso
+    </div>
+
+    <a href="/Aquatransporte.apk" download class="manual-btn" id="manualBtn" style="display:none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+      Baixar Manualmente
+    </a>
+
+    <p class="footer-note">Aguatrans Trans Logística &copy; 2026</p>
+  </div>
+
+  <script>
+    // Animate percentage counter
+    const pctEl = document.getElementById('pct');
+    const progressFill = document.getElementById('progressFill');
+    let currentPct = 0;
+    const totalDuration = 2500; // matches CSS animation
+    const interval = 50;
+    const steps = totalDuration / interval;
+    const increment = 100 / steps;
+
+    const counter = setInterval(() => {
+      currentPct += increment;
+      if (currentPct >= 100) {
+        currentPct = 100;
+        clearInterval(counter);
+      }
+      pctEl.textContent = Math.round(currentPct) + '%';
+    }, interval);
+
+    // Auto-trigger download after progress animation
+    setTimeout(() => {
+      const link = document.createElement('a');
+      link.href = '/Aquatransporte.apk';
+      link.download = 'Aquatransporte.apk';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Show manual button as fallback
+      setTimeout(() => {
+        document.getElementById('manualBtn').style.display = 'inline-flex';
+      }, 1500);
+    }, 2800);
+  </script>
+
+</body>
+</html>
