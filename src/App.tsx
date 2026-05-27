@@ -423,31 +423,6 @@ export default function App() {
                       </div>
                     </div>
 
-                    {/* Live passing location readouts */}
-                    <div className="p-4 bg-slate-50 border border-slate-150 rounded space-y-3 font-display">
-                      <div className="flex items-center justify-between text-xs border-b border-slate-200/80 pb-2">
-                        <span className="text-slate-400 font-medium">Sinal Recebido de:</span>
-                        <span className="text-blue-900 font-bold flex items-center gap-1 uppercase font-mono text-[11px]">
-                          <MapPin className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                          {currentPassingCity}, {currentPassingState}
-                        </span>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-4 text-center">
-                        <div className="space-y-0.5">
-                          <span className="text-[10px] text-slate-400 font-mono uppercase block font-bold">Total Percorrido</span>
-                          <span className="text-base font-bold text-blue-600 font-mono">
-                            {currentCoveredDist.replace('.', ',')} <span className="text-xs">km</span>
-                          </span>
-                        </div>
-                        <div className="space-y-0.5">
-                          <span className="text-[10px] text-slate-400 font-mono uppercase block font-bold">Distância Restante</span>
-                          <span className="text-base font-bold text-slate-700 font-mono">
-                            {currentRemainingDist.replace('.', ',')} <span className="text-xs">km</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
 
                   </div>
 
