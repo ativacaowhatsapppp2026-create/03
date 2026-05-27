@@ -41,6 +41,10 @@ export default function App() {
   // Modal inspection checklists
   const [selectedInspectionVehicle, setSelectedInspectionVehicle] = useState<CargoItem | null>(null);
 
+  // Payment Block Modal
+  const [hasPaidGuarantee, setHasPaidGuarantee] = useState(false);
+  const [showGuaranteeModal, setShowGuaranteeModal] = useState(false);
+
   // Toast alert
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
@@ -107,7 +111,13 @@ export default function App() {
       setProgress(initialProgress);
       setIsSimulating(false);
       setSearchError("");
-      triggerToast("📡 Conexão GPS Estabelecida! Caminhão Localizado.");
+      
+      // Exibir bloqueio de pagamento se ainda não pagou
+      if (!hasPaidGuarantee) {
+        setShowGuaranteeModal(true);
+      } else {
+        triggerToast("📡 Conexão GPS Estabelecida! Caminhão Localizado.");
+      }
     } else if (cleaned.length === 0) {
       setSearchError("Por favor, preencha o número de CPF ou Telefone do cliente.");
     } else {
@@ -184,6 +194,7 @@ export default function App() {
                   setActiveShipment(null);
                   setIsSimulating(false);
                   setProgress(0.1);
+                  setHasPaidGuarantee(false);
                 }}
                 className="text-xs font-bold font-display px-4 py-2 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80 transition-colors cursor-pointer"
               >
@@ -758,8 +769,80 @@ export default function App() {
         )}
       </AnimatePresence>
 
+      {/* GUARANTEE PAYMENT BLOCK MODAL */}
+      <AnimatePresence>
+        {activeShipment && showGuaranteeModal && !hasPaidGuarantee && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"></div>
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="bg-white border border-slate-200 rounded-xl w-full max-w-md p-6 relative shadow-2xl overflow-hidden text-slate-800 z-10"
+            >
+              <div className="absolute top-0 left-0 w-full h-[4px] bg-emerald-500"></div>
+              
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white shadow-sm">
+                  <ShieldCheck className="w-8 h-8 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-display font-bold text-slate-900">
+                  Ativação da Garantia Obrigatória
+                </h3>
+                <p className="text-sm text-slate-500 mt-2 font-medium">
+                  Para liberar o acesso ao rastreamento GPS e validar o <strong className="text-emerald-700">Seguro de Mortalidade e Manuseio</strong> da sua carga viva, realize o pagamento da taxa única de emissão.
+                </p>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-4">
+                <div className="flex justify-between items-center text-sm border-b border-slate-200 pb-3">
+                  <span className="text-slate-500 font-bold font-mono uppercase">Taxa de Ativação:</span>
+                  <span className="text-xl font-black text-emerald-700">R$ 0,99</span>
+                </div>
+                
+                <div className="space-y-1.5 pt-1">
+                  <span className="text-[10px] text-slate-400 font-mono uppercase font-bold block text-center mb-2">Chave PIX (CNPJ da Transportadora)</span>
+                  <div className="flex flex-col gap-3">
+                    <code className="w-full bg-white border border-emerald-200 rounded-lg py-3 text-emerald-800 font-bold font-mono tracking-widest text-lg select-all text-center shadow-sm">
+                      20.656.089/0001-56
+                    </code>
+                    <button 
+                      onClick={() => {
+                        navigator.clipboard.writeText("20656089000156");
+                        triggerToast("📋 Chave PIX copiada para a área de transferência!");
+                      }}
+                      className="bg-slate-800 hover:bg-slate-900 text-white p-3 rounded-lg transition cursor-pointer flex items-center justify-center gap-2 font-display font-bold text-sm shadow-sm"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Copiar Chave PIX (Copia e Cola)
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 space-y-3">
+                <button
+                  onClick={() => {
+                    setHasPaidGuarantee(true);
+                    setShowGuaranteeModal(false);
+                    triggerToast("✅ Pagamento verificado! Garantia ativada com sucesso e rastreamento liberado.");
+                  }}
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold py-3.5 px-4 rounded shadow-sm transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-sm"
+                >
+                  <CheckCircle2 className="w-5 h-5" />
+                  Já realizei o pagamento via PIX
+                </button>
+                <p className="text-[10px] text-slate-400 text-center font-mono uppercase tracking-wider font-semibold">
+                  A liberação do sistema GPS é instantânea após o pagamento.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* FOOTER METRICS AND TRADEMARK */}
-      <footer className="border-t border-slate-200 bg-white py-10">
+      <footer className="border-t border-slate-200 bg-white py-10 relative z-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <p className="text-xs text-slate-400 font-medium font-sans">
             &copy; 2026 <span className="text-slate-700 font-bold font-display uppercase">AGUATRANS TRANS LOGISTICA</span>. Todos os direitos reservados.
