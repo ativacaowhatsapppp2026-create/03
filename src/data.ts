@@ -1,171 +1,310 @@
 import { Shipment } from "./types";
 
 export const shipmentsData: Shipment[] = [
-{
-  cpf: "86707455508",
-  customerName: "Antonio Pereira dos Santos",
-  customerEmail: "",
-  driverName: "Marcos Aurélio Silveira",
-  driverPhone: "+55 (55) 99182-4432",
-  truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
-  origin: "Curitiba, PR (Aguavita)",
-  destination: "Iraquara, BA",
-  destinationAddress: "Posto a entrada do mato preto, o lavarapido do hulk, Iraquara - BA, CEP: 46980-000",
-  currentCity: "Curitiba",
-  currentState: "PR",
-  totalDistanceKm: 2150,
-  coveredDistanceKm: 15,
-  estimatedDays: 4,
-  departureDate: "25/05/2026",
-  cargo: [
-    {
-      species: "Carpa Capim",
-      quantity: "20 un",
-      details: "Alevinos saudáveis, oxigenação 95%"
-    },
-    {
-      species: "Tambaçu",
-      quantity: "15 un",
-      details: "Tamanho juvenil, água termicamente controlada"
-    },
-    {
-      species: "Carpas Coloridas (Nishikigoi)",
-      quantity: "Lote Diversas",
-      details: "Alta pureza de cores, acondicionamento especial"
-    }
-  ],
-  route: [
-    { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
-    { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
-    { lat: -19.9208, lng: -43.9378, city: "Belo Horizonte", state: "MG" },
-    { lat: -12.2479, lng: -41.6146, city: "Iraquara", state: "BA" }
-  ],
-  statusLog: [
-    {
-      title: "Caminhão em Trânsito",
-      description: "O transporte com os tanques ativados partiu de Curitiba e segue viagem rumo a Iraquara.",
-      time: "13:00",
-      date: "25/05/2026",
-      completed: true,
-      active: true
-    },
-    {
-      title: "Aclimatação e Embarque",
-      description: "Os peixes foram devidamente aclimatados e os sistemas de oxigenação e filtragem do caminhão-tanque operam em capacidade ideal.",
-      time: "10:30",
-      date: "25/05/2026",
-      completed: true,
-      active: false
-    },
-    {
-      title: "Vistoria da Qualidade da Água",
-      description: "Laudo técnico confirma pH e níveis de oxigênio dissolvido dentro dos parâmetros exigidos para as espécies transportadas.",
-      time: "09:45",
-      date: "25/05/2026",
-      completed: true,
-      active: false
-    }
-  ]
-},
-{
-  cpf: "11111111111",
-  customerName: "Luis Antonio de Andrade",
-  customerEmail: "",
-  driverName: "Marcos Aurélio Silveira",
-  driverPhone: "+55 (55) 99182-4432",
-  truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
-  origin: "Curitiba, PR (Aguavita)",
-  destination: "Engenheiro Paulo de Frontin, RJ",
-  destinationAddress: "Rua Durvaldino de Souza, nº 45, Bairro Morro Azul, Engenheiro Paulo de Frontin - RJ, CEP: 26650-000 (Ref: Rua do campo de futebol)",
-  currentCity: "Curitiba",
-  currentState: "PR",
-  totalDistanceKm: 850,
-  coveredDistanceKm: 15,
-  estimatedDays: 2,
-  departureDate: "25/05/2026",
-  cargo: [
-    {
-      species: "Tilápia Tailandesa",
-      quantity: "1 milheiro",
-      details: "Alevinos, oxigenação 95%"
-    },
-    {
-      species: "Carpa Capim",
-      quantity: "20 un",
-      details: "Alevinos saudáveis"
-    },
-    {
-      species: "Pintado Amazônico",
-      quantity: "2 un",
-      details: "Tamanho juvenil"
-    },
-    {
-      species: "Carpa Filtradora",
-      quantity: "10 un",
-      details: "Água termicamente controlada"
-    }
-  ],
-  route: [
-    { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
-    { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
-    { lat: -22.5516, lng: -43.6775, city: "Eng. Paulo de Frontin", state: "RJ" }
-  ],
-  statusLog: [
-    {
-      title: "Caminhão em Trânsito",
-      description: "O transporte com os tanques ativados partiu de Curitiba e segue viagem rumo ao Rio de Janeiro.",
-      time: "13:00",
-      date: "25/05/2026",
-      completed: true,
-      active: true
-    },
-    {
-      title: "Aclimatação e Embarque",
-      description: "As tilápias, carpas e pintados foram devidamente aclimatados e os sistemas de oxigenação operam em capacidade ideal.",
-      time: "10:30",
-      date: "25/05/2026",
-      completed: true,
-      active: false
-    }
-  ]
-},
-{
-  cpf: "22222222222",
-  customerName: "[Cliente 3]",
-  customerEmail: "",
-  driverName: "Marcos Aurélio Silveira",
-  driverPhone: "+55 (55) 99182-4432",
-  truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
-  origin: "Curitiba, PR (Aguavita)",
-  destination: "Destino 3",
-  destinationAddress: "Endereço 3",
-  currentCity: "Curitiba",
-  currentState: "PR",
-  totalDistanceKm: 1500,
-  coveredDistanceKm: 15,
-  estimatedDays: 3,
-  departureDate: "25/05/2026",
-  cargo: [
-    {
-      species: "Peixe Y",
-      quantity: "50 un",
-      details: "Detalhes"
-    }
-  ],
-  route: [
-    { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" }
-  ],
-  statusLog: [
-    {
-      title: "Caminhão em Trânsito",
-      description: "O transporte com os tanques ativados partiu de Curitiba.",
-      time: "13:00",
-      date: "25/05/2026",
-      completed: true,
-      active: true
-    }
-  ]
-}
+  {
+    cpf: "41871653800",
+    customerName: "Gustavo Rodrigo Lubiatto Pinto",
+    customerEmail: "",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Aguavita)",
+    destination: "Ubarana, SP",
+    destinationAddress: "Bairro: emprojim, Ubarana - SP, CEP: 15225-000",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 650,
+    coveredDistanceKm: 15,
+    estimatedDays: 2,
+    departureDate: "26/05/2026",
+    cargo: [
+      { species: "Carpa Húngara", quantity: "200 un", details: "Valor: R$ 67,50" },
+      { species: "Pangasius (Pangabr)", quantity: "30 un", details: "Valor: R$ 90,00" },
+      { species: "Bagre Americano (Catfish)", quantity: "100 un", details: "Valor: R$ 22,50" },
+      { species: "Bagre Jundiá Cinza", quantity: "150 un", details: "Valor: R$ 33,75" },
+      { species: "Matrinxã", quantity: "200 un", details: "Valor: R$ 52,50" },
+      { species: "Tambaqui", quantity: "100 un", details: "Valor: R$ 24,00" },
+      { species: "Tambaçu", quantity: "100 un", details: "Valor: R$ 24,00" },
+      { species: "Piau Açu", quantity: "100 un", details: "Valor: R$ 28,50" },
+      { species: "Pirarara (10 - 12 cm)", quantity: "2 un", details: "Valor: R$ 58,00" }
+    ],
+    route: [
+      { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
+      { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
+      { lat: -21.1633, lng: -49.7183, city: "Ubarana", state: "SP" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte com os tanques ativados partiu de Curitiba.",
+        time: "13:00",
+        date: "26/05/2026",
+        completed: true,
+        active: true
+      },
+      {
+        title: "Aclimatação e Embarque",
+        description: "Os peixes foram devidamente aclimatados.",
+        time: "10:30",
+        date: "26/05/2026",
+        completed: true,
+        active: false
+      }
+    ]
+  },
+  {
+    cpf: "00000000000",
+    customerName: "Carlos Henrique de Souza Fagundes",
+    customerEmail: "",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Aguavita)",
+    destination: "Pedro Leopoldo, MG",
+    destinationAddress: "Rua pacífico Rodrigues, 278c no final do beco, Bairro fidalgo, Pedro Leopoldo - MG (Ref: antes das 2 praças)",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 1050,
+    coveredDistanceKm: 15,
+    estimatedDays: 3,
+    departureDate: "26/05/2026",
+    cargo: [
+      { species: "Carpa Nishikigoi (4 a 7 cm)", quantity: "30 un", details: "Valor: R$ 56,10" }
+    ],
+    route: [
+      { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
+      { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
+      { lat: -19.9208, lng: -43.9378, city: "Belo Horizonte", state: "MG" },
+      { lat: -19.6178, lng: -44.0431, city: "Pedro Leopoldo", state: "MG" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu de Curitiba com destino a Minas Gerais.",
+        time: "13:00",
+        date: "26/05/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  },
+  {
+    cpf: "72178825672",
+    customerName: "Wilson soares delgado",
+    customerEmail: "",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Aguavita)",
+    destination: "Piumhi, MG",
+    destinationAddress: "Avenida José alvarenga, NM 250, Bairro fidalgo, Piumhi - MG, CEP: 37925-000",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 850,
+    coveredDistanceKm: 15,
+    estimatedDays: 2,
+    departureDate: "26/05/2026",
+    cargo: [
+      { species: "Tilápia Tailandesa (4 a 6 cm)", quantity: "1.000 un", details: "Valor: R$ 187,50" },
+      { species: "Trairão do Amazonas (3 a 4 cm)", quantity: "100 un", details: "Valor: R$ 187,50" },
+      { species: "Carpas Coloridas (Nishikigoi) (3 a 4 cm)", quantity: "25 un", details: "Valor: R$ 46,75" },
+      { species: "Pintado Amazônico (8 a 10 cm)", quantity: "15 un", details: "Valor: R$ 56,25" }
+    ],
+    route: [
+      { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
+      { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
+      { lat: -20.4631, lng: -45.9558, city: "Piumhi", state: "MG" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu de Curitiba com destino a Minas Gerais.",
+        time: "13:00",
+        date: "26/05/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  },
+  {
+    cpf: "09621403847",
+    customerName: "Vanderlei Rodrigues da Silva",
+    customerEmail: "",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Aguavita)",
+    destination: "Morungaba, SP",
+    destinationAddress: "Rua José Ari de Campos, nº 51, Bairro Parque das Estância, Morungaba - SP, CEP: 13267-836",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 450,
+    coveredDistanceKm: 15,
+    estimatedDays: 1,
+    departureDate: "26/05/2026",
+    cargo: [
+      { species: "Carpa Cabeça Grande", quantity: "200 un", details: "Valor: R$ 700,00" }
+    ],
+    route: [
+      { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
+      { lat: -22.8797, lng: -46.7917, city: "Morungaba", state: "SP" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu de Curitiba com destino a São Paulo.",
+        time: "13:00",
+        date: "26/05/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  },
+  {
+    cpf: "00000000000",
+    customerName: "Augusto Eigi",
+    customerEmail: "",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Aguavita)",
+    destination: "Ubirajara, SP",
+    destinationAddress: "Praça Porcino Antônio de Lima, nº 530, Em frente à Prefeitura, Ubirajara - SP, CEP: 17440-000",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 480,
+    coveredDistanceKm: 15,
+    estimatedDays: 2,
+    departureDate: "26/05/2026",
+    cargo: [
+      { species: "Trairão do Amazonas", quantity: "100 un", details: "Valor: R$ 187,50" },
+      { species: "Tambaqui", quantity: "100 un", details: "Valor: R$ 24,00" },
+      { species: "Pacu", quantity: "140 un", details: "Valor: R$ 33,60" },
+      { species: "Lambari Rosa", quantity: "100 un", details: "Valor: R$ 18,75" }
+    ],
+    route: [
+      { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
+      { lat: -22.5205, lng: -49.6386, city: "Ubirajara", state: "SP" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu de Curitiba com destino a São Paulo.",
+        time: "13:00",
+        date: "26/05/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  },
+  {
+    cpf: "00000000000",
+    customerName: "Ezequiel de Matos Gonçalves",
+    customerEmail: "",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Aguavita)",
+    destination: "Campina Verde, MG",
+    destinationAddress: "Rua dos Manacás, nº 312, Bairro Nova Campina Verde, Campina Verde - MG, CEP: 38270-000",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 850,
+    coveredDistanceKm: 15,
+    estimatedDays: 3,
+    departureDate: "26/05/2026",
+    cargo: [
+      { species: "Tambaqui (3 a 4 cm)", quantity: "3.000 un", details: "Valor: R$ 720,00" }
+    ],
+    route: [
+      { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
+      { lat: -23.5505, lng: -46.6333, city: "São Paulo", state: "SP" },
+      { lat: -19.5358, lng: -49.4864, city: "Campina Verde", state: "MG" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu de Curitiba com destino a Minas Gerais.",
+        time: "13:00",
+        date: "26/05/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  },
+  {
+    cpf: "27511031897",
+    customerName: "Uander Júnior",
+    customerEmail: "",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Aguavita)",
+    destination: "Pindorama, SP",
+    destinationAddress: "Rua Santa Terezinha, nº 447, Distrito de Roberto, Pindorama - SP, CEP: 15835-000",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 600,
+    coveredDistanceKm: 15,
+    estimatedDays: 2,
+    departureDate: "26/05/2026",
+    cargo: [
+      { species: "Tambaçu", quantity: "500 un", details: "Valor: R$ 120,00" },
+      { species: "Matrinxã", quantity: "500 un", details: "Valor: R$ 131,25" },
+      { species: "Trairão do Amazonas", quantity: "100 un", details: "Valor: R$ 187,50" }
+    ],
+    route: [
+      { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
+      { lat: -21.1869, lng: -48.9056, city: "Pindorama", state: "SP" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu de Curitiba com destino a São Paulo.",
+        time: "13:00",
+        date: "26/05/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  },
+  {
+    cpf: "00759253200",
+    customerName: "Lincoln Simões de Mello Junior",
+    customerEmail: "",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Aguavita)",
+    destination: "Manaus, AM",
+    destinationAddress: "Rua Nilo Geber, nº 90, Bairro Coroado, Manaus - AM, CEP: 69082-550 (Ref: Bar do Trica Ferro)",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 4200,
+    coveredDistanceKm: 15,
+    estimatedDays: 10,
+    departureDate: "08/06/2026",
+    cargo: [
+      { species: "Kinguio 6 cm", quantity: "25 un", details: "Valor: R$ 75,00" },
+      { species: "Telescópio 6 cm", quantity: "22 un", details: "Valor: R$ 66,00" },
+      { species: "Pirarara", quantity: "2 un", details: "Valor: R$ 60,00" }
+    ],
+    route: [
+      { lat: -25.4296, lng: -49.2719, city: "Curitiba", state: "PR" },
+      { lat: -15.8267, lng: -47.9218, city: "Brasília", state: "DF" },
+      { lat: -3.1190, lng: -60.0217, city: "Manaus", state: "AM" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu de Curitiba com destino ao Amazonas.",
+        time: "13:00",
+        date: "08/06/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  }
 ];
 
 export function cleanCPF(cpf: string): string {
