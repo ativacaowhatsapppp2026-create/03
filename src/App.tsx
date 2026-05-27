@@ -59,10 +59,10 @@ export default function App() {
             triggerToast(`🎉 O caminhão chegou ao destino final em ${activeShipment.destination}!`);
             return 100;
           }
-          // Velocidade em tempo real simulada: ~80 km/h
-          // Em 100ms, a distância percorrida é: 80 km/h / 36000 = 0.002222 km
-          // Incremento no progresso em % = (0.002222 / distância_total) * 100
-          const increment = (0.002222 / activeShipment.totalDistanceKm) * 100;
+          // Velocidade simulada estrita: 1 km a cada 60 segundos (60 km/h)
+          // Em 1 segundo = 0.01666 km
+          // Em 100ms = 0.001666 km
+          const increment = (0.0016666666 / activeShipment.totalDistanceKm) * 100;
           return Math.min(prev + increment, 100);
         });
       }, 100);
@@ -116,8 +116,8 @@ export default function App() {
         
         if (now > departureDateObj) {
           const diffMs = now.getTime() - departureDateObj.getTime();
-          const diffHours = diffMs / (1000 * 60 * 60);
-          finalCoveredKm = diffHours * 80; // 80 km/h
+          const diffMinutes = diffMs / (1000 * 60);
+          finalCoveredKm = diffMinutes * 1; // 1 km a cada 60 segundos
         } else {
           finalCoveredKm = 0;
         }
