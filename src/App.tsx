@@ -130,7 +130,7 @@ export default function App() {
       }
       
       finalCoveredKm = Math.min(finalCoveredKm, found.totalDistanceKm);
-      const initialProgress = Math.max(0.1, (finalCoveredKm / found.totalDistanceKm) * 100);
+      const initialProgress = Math.max(0, (finalCoveredKm / found.totalDistanceKm) * 100);
       setProgress(initialProgress);
       setIsSimulating(false);
       setSearchError("");
@@ -437,13 +437,13 @@ export default function App() {
                         <div className="space-y-0.5">
                           <span className="text-[10px] text-slate-400 font-mono uppercase block font-bold">Total Percorrido</span>
                           <span className="text-base font-bold text-blue-600 font-mono">
-                            {currentCoveredDist} <span className="text-xs">km</span>
+                            {currentCoveredDist.replace('.', ',')} <span className="text-xs">km</span>
                           </span>
                         </div>
                         <div className="space-y-0.5">
                           <span className="text-[10px] text-slate-400 font-mono uppercase block font-bold">Distância Restante</span>
                           <span className="text-base font-bold text-slate-700 font-mono">
-                            {currentRemainingDist} <span className="text-xs">km</span>
+                            {currentRemainingDist.replace('.', ',')} <span className="text-xs">km</span>
                           </span>
                         </div>
                       </div>
