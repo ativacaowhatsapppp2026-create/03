@@ -51,18 +51,24 @@ export default function App() {
 
   // Handle auto-simulation loop
   useEffect(() => {
+    let lastTick = Date.now();
+    
     if (isSimulating && activeShipment) {
       simulationIntervalRef.current = setInterval(() => {
+        const now = Date.now();
+        const deltaMs = now - lastTick;
+        lastTick = now;
+
         setProgress((prev) => {
           if (prev >= 100) {
             setIsSimulating(false);
             triggerToast(`🎉 O caminhão chegou ao destino final em ${activeShipment.destination}!`);
             return 100;
           }
-          // Velocidade simulada estrita: 1 km a cada 60 segundos (60 km/h)
-          // Em 1 segundo = 0.01666 km
-          // Em 100ms = 0.001666 km
-          const increment = (0.0016666666 / activeShipment.totalDistanceKm) * 100;
+          // Velocidade simulada imune a lag/suspensão da aba
+          // 1 km a cada 60 segundos (60.000 ms) exatos
+          const kmCovered = (deltaMs / 60000) * 1;
+          const increment = (kmCovered / activeShipment.totalDistanceKm) * 100;
           return Math.min(prev + increment, 100);
         });
       }, 100);
