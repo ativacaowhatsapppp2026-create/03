@@ -24,6 +24,7 @@ export interface Shipment {
   cpf: string;
   customerName: string;
   customerEmail?: string;
+  customerPhone: string;
   driverName: string;
   driverPhone: string;
   truckPlate: string;

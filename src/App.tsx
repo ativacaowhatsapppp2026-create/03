@@ -34,7 +34,7 @@ export default function App() {
   const [activeShipment, setActiveShipment] = useState<Shipment | null>(null);
 
   // Simulation State
-  const [progress, setProgress] = useState(2.3); // Start at ~2.3% (Acabou de sair de Uruguaiana)
+  const [progress, setProgress] = useState(0.1); 
   const [isSimulating, setIsSimulating] = useState(false);
   const simulationIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -47,16 +47,19 @@ export default function App() {
 
   // Handle auto-simulation loop
   useEffect(() => {
-    if (isSimulating) {
+    if (isSimulating && activeShipment) {
       simulationIntervalRef.current = setInterval(() => {
         setProgress((prev) => {
           if (prev >= 100) {
             setIsSimulating(false);
-            triggerToast("🎉 O caminhão chegou ao destino final em Iraquara, BA!");
+            triggerToast(`🎉 O caminhão chegou ao destino final em ${activeShipment.destination}!`);
             return 100;
           }
-          // Increment speed
-          return Math.min(prev + 0.35, 100);
+          // Velocidade em tempo real simulada: ~80 km/h
+          // Em 100ms, a distância percorrida é: 80 km/h / 36000 = 0.002222 km
+          // Incremento no progresso em % = (0.002222 / distância_total) * 100
+          const increment = (0.002222 / activeShipment.totalDistanceKm) * 100;
+          return Math.min(prev + increment, 100);
         });
       }, 100);
     } else {
@@ -70,7 +73,7 @@ export default function App() {
         clearInterval(simulationIntervalRef.current);
       }
     };
-  }, [isSimulating]);
+  }, [isSimulating, activeShipment]);
 
   const triggerToast = (msg: string) => {
     setToastMessage(msg);
@@ -89,12 +92,7 @@ export default function App() {
 
   // Formatted display helper
   const getCpfDisplayValue = () => {
-    if (!cpfInput) return "";
-    const raw = cleanCPF(cpfInput);
-    if (raw.length <= 3) return raw;
-    if (raw.length <= 6) return `${raw.slice(0, 3)}.${raw.slice(3)}`;
-    if (raw.length <= 9) return `${raw.slice(0, 3)}.${raw.slice(3, 6)}.${raw.slice(6)}`;
-    return `${raw.slice(0, 3)}.${raw.slice(3, 6)}.${raw.slice(6, 9)}-${raw.slice(9, 11)}`;
+    return cpfInput; // Removido a auto-formatação pois pode ser CPF ou Celular (ambos 11 dígitos)
   };
 
   // Perform search query
@@ -102,30 +100,29 @@ export default function App() {
     e.preventDefault();
     const cleaned = cleanCPF(cpfInput);
 
-    const found = shipmentsData.find(s => cleanCPF(s.cpf) === cleaned);
+    const found = shipmentsData.find(s => cleanCPF(s.cpf) === cleaned || cleanCPF(s.customerPhone || "") === cleaned);
     if (found) {
       setActiveShipment(found);
-      setProgress(2.5); // Reset back to Uruguaiana departure on load
+      const initialProgress = Math.max(0.1, (found.coveredDistanceKm / found.totalDistanceKm) * 100);
+      setProgress(initialProgress);
       setIsSimulating(false);
       setSearchError("");
       triggerToast("📡 Conexão GPS Estabelecida! Caminhão Localizado.");
     } else if (cleaned.length === 0) {
-      setSearchError("Por favor, preencha o número de CPF do cliente.");
+      setSearchError("Por favor, preencha o número de CPF ou Telefone do cliente.");
     } else {
-      setSearchError("CPF não localizado no manifesto de transporte ativo.");
+      setSearchError("CPF ou Telefone não localizado no manifesto de transporte ativo.");
     }
   };
 
   // Calculate dynamic telemetry based on progress
   const totalDist = activeShipment ? activeShipment.totalDistanceKm : 0;
-  const currentCoveredDist = Math.max(
-    45, 
-    Math.round((progress / 100) * totalDist)
-  );
-  const currentRemainingDist = Math.max(0, totalDist - currentCoveredDist);
+  const currentCoveredDistValue = (progress / 100) * totalDist;
+  const currentCoveredDist = currentCoveredDistValue.toFixed(2);
+  const currentRemainingDist = Math.max(0, totalDist - currentCoveredDistValue).toFixed(2);
   
   // Speed approximation: 80 km/h average
-  const hoursRemaining = Math.max(0, Math.round(currentRemainingDist / 80));
+  const hoursRemaining = Math.max(0, (totalDist - currentCoveredDistValue) / 80);
   const daysRemaining = (hoursRemaining / 24).toFixed(1);
 
   // Dynamic Waypoint finding based on progress index
@@ -186,7 +183,7 @@ export default function App() {
                 onClick={() => {
                   setActiveShipment(null);
                   setIsSimulating(false);
-                  setProgress(2.5);
+                  setProgress(0.1);
                 }}
                 className="text-xs font-bold font-display px-4 py-2 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80 transition-colors cursor-pointer"
               >
@@ -230,20 +227,20 @@ export default function App() {
               
               <h2 className="text-base font-display font-bold text-slate-800 mb-5 flex items-center gap-2">
                 <Compass className="w-4.5 h-4.5 text-blue-600" />
-                Rastreamento por CPF do Comprador
+                Rastreamento por CPF ou Telefone
               </h2>
 
               <form onSubmit={handleSearch} className="space-y-4">
                 <div>
                   <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    Digite o CPF do Cliente
+                    Digite o CPF ou Telefone do Cliente
                   </label>
                   <div className="relative">
                     <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
                       type="text"
                       className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition text-slate-900 font-mono tracking-wide placeholder:text-slate-400 font-medium"
-                      placeholder="000.000.000-00"
+                      placeholder="Apenas números (Ex: 00000000000)"
                       value={getCpfDisplayValue()}
                       onChange={handleCpfChange}
                     />
@@ -410,8 +407,9 @@ export default function App() {
                       <button
                         onClick={() => {
                           setIsSimulating(false);
-                          setProgress(2.5);
-                          triggerToast(`🚚 Recuado para: Acabando de sair de ${activeShipment.origin}.`);
+                          const initialProgress = Math.max(0.1, (activeShipment.coveredDistanceKm / activeShipment.totalDistanceKm) * 100);
+                          setProgress(initialProgress);
+                          triggerToast(`🚚 Recuado para a posição inicial registrada.`);
                         }}
                         className="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 py-2.5 px-3 rounded text-xs font-display font-bold flex items-center justify-center gap-1.5 transition cursor-pointer"
                         title="Voltar ao ponto inicial original"
