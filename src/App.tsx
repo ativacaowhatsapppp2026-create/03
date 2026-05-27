@@ -267,16 +267,25 @@ export default function App() {
             {/* Quick trust metrics panel */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4.5 mt-12 w-full max-w-4xl text-center">
               <div className="p-5 bg-white border border-slate-200 rounded-lg shadow-sm">
-                <div className="font-display font-bold text-lg text-slate-800">100% Homologado</div>
-                <div className="text-[10px] text-slate-400 mt-1 uppercase font-mono font-bold tracking-wider">Certificações de Carga</div>
+                <div className="font-display font-bold text-lg text-slate-800 flex items-center justify-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                  Garantia de Vida
+                </div>
+                <div className="text-[10px] text-slate-400 mt-1 uppercase font-mono font-bold tracking-wider">Transporte Assegurado 100%</div>
               </div>
               <div className="p-5 bg-white border border-slate-200 rounded-lg shadow-sm">
-                <div className="font-display font-bold text-lg text-slate-800">Sinal Satelital</div>
-                <div className="text-[10px] text-slate-400 mt-1 uppercase font-mono font-bold tracking-wider">Atualização a cada 30s</div>
+                <div className="font-display font-bold text-lg text-slate-800 flex items-center justify-center gap-2">
+                  <Compass className="w-5 h-5 text-blue-500" />
+                  Sinal Satelital
+                </div>
+                <div className="text-[10px] text-slate-400 mt-1 uppercase font-mono font-bold tracking-wider">Acompanhamento em Tempo Real</div>
               </div>
               <div className="p-5 bg-white border border-slate-200 rounded-lg shadow-sm">
-                <div className="font-display font-bold text-lg text-slate-800">Vistoria Eletrônica</div>
-                <div className="text-[10px] text-slate-400 mt-1 uppercase font-mono font-bold tracking-wider">Laudos com Fotos Digitais</div>
+                <div className="font-display font-bold text-lg text-slate-800 flex items-center justify-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-500" />
+                  Manuseio Técnico
+                </div>
+                <div className="text-[10px] text-slate-400 mt-1 uppercase font-mono font-bold tracking-wider">Laudos com Vistoria Eletrônica</div>
               </div>
             </div>
           </div>
@@ -293,6 +302,10 @@ export default function App() {
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-[11px] font-mono tracking-widest font-extrabold text-blue-700 bg-blue-50 py-1 px-2.5 rounded border border-blue-200 uppercase">
                       Manifesto Ativo #{activeShipment.cpf.slice(0,6)}-AGUA
+                    </span>
+                    <span className="text-[11px] font-mono tracking-widest font-extrabold text-emerald-700 bg-emerald-50 py-1 px-2.5 rounded border border-emerald-200 uppercase flex items-center gap-1">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                      Garantia de Transporte Validada
                     </span>
                     <span className={`text-[10px] font-bold py-1 px-2.5 rounded border tracking-wider font-display uppercase ${journeyStatus.color}`}>
                       {journeyStatus.label}
@@ -664,14 +677,19 @@ export default function App() {
 
               <div className="mb-5">
                 <span className="text-[9px] font-mono uppercase bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded font-extrabold">
-                  Relatório Eletrônico de Vistoria
+                  Relatório de Vistoria e Manejo Técnico
                 </span>
                 <h3 className="text-lg font-display font-bold text-slate-900 mt-1.5 animate-fadeIn">
                   {selectedInspectionVehicle.species}
                 </h3>
-                <p className="text-xs text-slate-500 flex items-center gap-1 font-mono">
+                <p className="text-xs text-slate-500 flex items-center gap-1 font-mono mt-1">
                   Quantidade: {selectedInspectionVehicle.quantity} | {selectedInspectionVehicle.details}
                 </p>
+                
+                <div className="mt-4 p-3.5 bg-cyan-50 border border-cyan-200 rounded-lg text-xs text-cyan-900 font-medium leading-relaxed">
+                  <strong>Atenção ao Cliente:</strong> Este laudo técnico documenta o correto manuseio dos animais no embarque e 
+                  <strong className="text-cyan-700"> VALIDA A GARANTIA DE TRANSPORTE VIVO</strong>. Para assegurar a garantia após a entrega, respeite o protocolo de aclimatação e soltura.
+                </div>
               </div>
 
               {/* Checklist technical details */}
@@ -720,12 +738,19 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="mt-6 flex justify-end">
+              <div className="mt-6 flex justify-between items-center gap-4 border-t border-slate-100 pt-5">
+                <button
+                  className="text-[10px] font-display font-bold text-blue-600 hover:text-blue-800 uppercase tracking-wide flex items-center gap-1.5 transition cursor-pointer"
+                  onClick={() => triggerToast("📥 O Manual de Aclimatação em PDF está sendo baixado no seu dispositivo.")}
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  Baixar Guia de Soltura (PDF)
+                </button>
                 <button
                   onClick={() => setSelectedInspectionVehicle(null)}
                   className="bg-blue-600 hover:bg-blue-700 text-white font-display font-semibold text-xs px-5 py-2.5 rounded cursor-pointer shadow-sm transition"
                 >
-                  Concluir Visualização
+                  Fechar Laudo
                 </button>
               </div>
             </motion.div>
