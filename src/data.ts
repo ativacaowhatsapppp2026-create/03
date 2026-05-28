@@ -271,6 +271,88 @@ export const shipmentsData: Shipment[] = [
     ]
   },
   {
+    cpf: "00000000000",
+    customerName: "Pedro Alves Arruda",
+    customerEmail: "",
+    customerPhone: "49991476024",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Sede Aguavita)",
+    destination: "Lages, SC",
+    destinationAddress: "Rua Terezinha Amaral Dihel, Bairro Vila Mariza, Lages - SC, CEP: 88524-610",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 320,
+    coveredDistanceKm: 15,
+    estimatedDays: 1,
+    departureDate: "29/05/2026",
+    departureTime: "09:00",
+    cargo: [
+      { species: "Carpa Húngara (3 a 4 cm)", quantity: "1 milheiro", details: "Valor: R$ 337,50" },
+      { species: "Carpa Capim (3 a 4 cm)", quantity: "1 milheiro", details: "Valor: R$ 337,50" },
+      { species: "Carpa Capim (8 a 12 cm)", quantity: "100 un", details: "Valor: R$ 187,50" },
+      { species: "Trairão do Amazonas (3 a 4 cm)", quantity: "200 un", details: "Valor: R$ 375,00" }
+    ],
+    route: [
+      { lat: -25.4290, lng: -49.2671, city: "Curitiba", state: "PR" },
+      { lat: -27.8158, lng: -50.3258, city: "Lages", state: "SC" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu da Sede Curitiba.",
+        time: "09:00",
+        date: "29/05/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  },
+  {
+    cpf: "01688015825",
+    customerName: "José Donizete Pereira",
+    customerEmail: "",
+    customerPhone: "19991562844",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Sede Aguavita)",
+    destination: "Sumaré, SP",
+    destinationAddress: "Rua Tupiniquins, nº 23, Bairro Jardim Basilicato, Sumaré - SP (Ref: Adega Avenida)",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 410,
+    coveredDistanceKm: 15,
+    estimatedDays: 1,
+    departureDate: "31/05/2026",
+    departureTime: "09:00",
+    cargo: [
+      { species: "Carpa Capim", quantity: "20 un", details: "Valor: R$ 45,00" },
+      { species: "Carpa Húngara", quantity: "20 un", details: "Valor: R$ 33,75" },
+      { species: "Curimatã", quantity: "50 un", details: "Valor: R$ 112,50" },
+      { species: "Piauçu", quantity: "100 un", details: "Valor: R$ 28,50" },
+      { species: "Lambari Rosa", quantity: "100 un", details: "Valor: R$ 18,75" },
+      { species: "Lambari Tambiu", quantity: "100 un", details: "Valor: R$ 18,75" },
+      { species: "Pacu", quantity: "50 un", details: "Valor: R$ 12,00" },
+      { species: "Tambaqui", quantity: "50 un", details: "Valor: R$ 12,00" }
+    ],
+    route: [
+      { lat: -25.4290, lng: -49.2671, city: "Curitiba", state: "PR" },
+      { lat: -22.8208, lng: -47.2697, city: "Sumaré", state: "SP" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu da Sede Curitiba.",
+        time: "09:00",
+        date: "31/05/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  },
+  {
     cpf: "00759253200",
     customerName: "Lincoln Simões de Mello Junior",
     customerEmail: "",
