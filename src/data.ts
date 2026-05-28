@@ -389,6 +389,80 @@ export const shipmentsData: Shipment[] = [
         active: true
       }
     ]
+  },
+  {
+    cpf: "49344124841",
+    customerName: "Júlio Cesar Banhett Pereira",
+    customerEmail: "",
+    customerPhone: "19988899863",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Sede Aguavita)",
+    destination: "Jaguariúna, SP",
+    destinationAddress: "Rua Tassinari, Bairro Jardim Dona Luiza, Jaguariúna - SP, CEP: 13912-682",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 420,
+    coveredDistanceKm: 15,
+    estimatedDays: 1,
+    departureDate: "03/06/2026",
+    departureTime: "09:00",
+    cargo: [
+      { species: "Pirarara Adulta 5kg", quantity: "3 un", details: "Peso: ~15kg | Valor: R$ 142,50 (R$ 9,50/kg)" }
+    ],
+    route: [
+      { lat: -25.4290, lng: -49.2671, city: "Curitiba", state: "PR" },
+      { lat: -22.7042, lng: -46.9856, city: "Jaguariúna", state: "SP" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu da Sede Curitiba.",
+        time: "09:00",
+        date: "03/06/2026",
+        completed: true,
+        active: true
+      }
+    ]
+  },
+  {
+    cpf: "48842091847",
+    customerName: "Cássio Alves dos Santos",
+    customerEmail: "",
+    customerPhone: "15996816743",
+    driverName: "Marcos Aurélio Silveira",
+    driverPhone: "+55 (55) 99182-4432",
+    truckPlate: "AGU-4D89 (Volvo FH 460 Tanque)",
+    origin: "Curitiba, PR (Sede Aguavita)",
+    destination: "Sorocaba, SP",
+    destinationAddress: "Rua Tibúrcio Ribeiro Filho, 390, Bairro Jardim Eucalipto, Sorocaba - SP, CEP: 18079-664 (Ref: Pra baixo para Palmeiras)",
+    currentCity: "Curitiba",
+    currentState: "PR",
+    totalDistanceKm: 400,
+    coveredDistanceKm: 15,
+    estimatedDays: 1,
+    departureDate: "03/06/2026",
+    departureTime: "09:00",
+    cargo: [
+      { species: "Carpa Nishikigoi (15 cm)", quantity: "10 un", details: "Valor: R$ 112,50" },
+      { species: "Carpa Nishikigoi (4 a 7 cm)", quantity: "20 un", details: "Valor: R$ 37,40" },
+      { species: "Kinguio 6 cm", quantity: "10 un", details: "Valor: R$ 30,00" }
+    ],
+    route: [
+      { lat: -25.4290, lng: -49.2671, city: "Curitiba", state: "PR" },
+      { lat: -23.5015, lng: -47.4526, city: "Sorocaba", state: "SP" }
+    ],
+    statusLog: [
+      {
+        title: "Caminhão em Trânsito",
+        description: "O transporte partiu da Sede Curitiba.",
+        time: "09:00",
+        date: "03/06/2026",
+        completed: true,
+        active: true
+      }
+    ]
   }
 ];
 
